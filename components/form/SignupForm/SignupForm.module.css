@@ -1,0 +1,49 @@
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.text {
+  font-size: small;
+  color: grey;
+}
+
+.input {
+  background: none;
+  outline: none;
+  border-radius: 5px;
+  height: 30px;
+  padding: 0 5px;
+}
+
+.helperText {
+  font-size: small;
+  color: tomato;
+}
+
+#childLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#button {
+  font-weight: 500;
+  height: 30px;
+  border: none;
+  outline: none;
+  display: grid;
+  place-items: center;
+}
+
+#button:disabled {
+  opacity: 70%;
+  cursor: not-allowed;
+}
