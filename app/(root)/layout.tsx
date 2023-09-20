@@ -1,9 +1,8 @@
-import Leftbar from '@/components/shared/Leftbar/Leftbar';
 import '../globals.css';
 import type { Metadata } from 'next';
-import Rightbar from '@/components/shared/Rightbar/Rightbar';
-import Bottombar from '@/components/shared/Bottombar/Bottombar';
 import { Providers } from '@/redux/providers';
+import Navbar from '@/components/shared/Navbar/Navbar';
+import Footer from '@/components/shared/Footer/Footer';
 
 export const metadata: Metadata = {
   title: 'Threads',
@@ -16,17 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body suppressHydrationWarning={true}>
-        <Providers>
-          <div id="container">
-            <Leftbar />
-            <div id="wrapper">{children}</div>
-            <Rightbar />
-          </div>
-          <Bottombar />
-        </Providers>
-      </body>
-    </html>
+    <>
+      <Navbar />
+      {children}
+      <Footer />
+    </>
   );
 }

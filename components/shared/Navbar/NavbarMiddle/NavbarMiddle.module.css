@@ -1,0 +1,15 @@
+#container {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  color: grey;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: white;
+}

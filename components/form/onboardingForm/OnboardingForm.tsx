@@ -51,6 +51,7 @@ const OnboardingForm = () => {
               style={{ objectFit: 'cover' }}
             />
             <UploadButton
+              className="custom-class"
               endpoint="imageUploader"
               onClientUploadComplete={(res) => {
                 if (res) {

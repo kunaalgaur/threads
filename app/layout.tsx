@@ -1,6 +1,7 @@
 import { Providers } from '@/redux/providers';
 import './globals.css';
 import type { Metadata } from 'next';
+import '@uploadthing/react/styles.css';
 
 export const metadata: Metadata = {
   title: 'Threads',

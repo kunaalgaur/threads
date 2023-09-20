@@ -1,0 +1,14 @@
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  font-size: xx-large;
+  height: 80px;
+  backdrop-filter: blur(10px) brightness(50%);
+  z-index: 90;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+}

@@ -22,6 +22,42 @@ body {
   width: 100%;
 }
 
+.custom-class {
+  background-color: none;
+}
+
+/* applied to button */
+.custom-class > *[data-ut-element='button'] {
+  padding: 5px 10px;
+  outline: none;
+  border-radius: 50px;
+  font-weight: 500;
+  background: none;
+  border: 1px solid #80808055;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* applied to button when uploading */
+.custom-class > *[data-ut-element='button'][data-state='readying'] {
+  background: none;
+  color: white;
+  cursor: not-allowed;
+}
+
+/* applied to button when uploading */
+.custom-class > *[data-ut-element='button'][data-state='uploading'] {
+  background: none;
+  color: white;
+  cursor: not-allowed;
+}
+
+/* applied to upload indicator when uploading */
+.custom-class > *[data-ut-element='button'][data-state='uploading']::after {
+  background: none;
+}
+
 @media (orientation: portrait) {
   #wrapper {
     padding: 20px;
