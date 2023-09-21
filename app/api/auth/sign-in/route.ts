@@ -20,22 +20,42 @@ export const POST = async (req: Request) => {
       });
     }
 
-    user.comparePassword();
-
-    const token = jwt.sign(email, process.env.JWT_SECRET as string);
-    if (!token) {
-      return NextResponse.json({
-        status: 503,
-        name: 'Custom Error',
-        message: 'There was an error in generating token, please try later.',
-      });
+    const validatePassword = await user.comparePassword(password);
+    if (!validatePassword) {
+      return NextResponse.json(
+        {
+          message:
+            'Incorrect password, please enter correct password to continue.',
+        },
+        { status: 403 }
+      );
     }
 
-    return NextResponse.json({
-      status: 200,
-      data: { userId: user._id, username: user.username, token: token },
+    const token = await user.getJWTToken();
+
+    const userImpData = {
+      ...user.toObject(),
+      password: undefined,
+      followers: undefined,
+      followings: undefined,
+      isPrivate: undefined,
+      forgotPasswordToken: undefined,
+      forgotPasswordTokenExpiry: undefined,
+      verifyToken: undefined,
+      verifyTokenExpiry: undefined,
+    };
+
+    const response = NextResponse.json({
+      user: userImpData,
+      token: token,
       message: 'You are successfully logged in.',
     });
+
+    response.cookies.set('token', token, {
+      httpOnly: true,
+    });
+
+    return response;
   } catch (error: any) {
     return NextResponse.json({
       status: 500,
