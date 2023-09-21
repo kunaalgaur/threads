@@ -20,15 +20,7 @@ export const POST = async (req: Request) => {
       });
     }
 
-    const validatePassword = await bcrypt.compare(password, user.password);
-    if (!validatePassword) {
-      return NextResponse.json({
-        Status: 403,
-        name: 'Custom Error',
-        message:
-          'Incorrect password, please enter correct password to continue.',
-      });
-    }
+    user.comparePassword();
 
     const token = jwt.sign(email, process.env.JWT_SECRET as string);
     if (!token) {

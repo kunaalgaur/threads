@@ -1,4 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 interface IUser extends Document {
   name: string;
@@ -27,17 +29,15 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
     username: {
       type: String,
       default: null,
-      sparse: true, // Allow null values to be unique
-      required: [true, 'Username is a required field.'],
       min: [3, 'Username must have atleast 3 charfacters.'],
       max: [20, 'Username cannot exceed 20 characters.'],
       lowercase: true,
-      trim: true,
     },
 
     email: {
       type: String,
       required: [true, 'Email is a required field.'],
+      unique: true,
       lowercase: true,
       trim: true,
       validate: {
@@ -60,8 +60,8 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
           );
         },
 
-        message: (props: { value: string }) =>
-          `${props.value} is not a secure password. Password must be alphanumeric, must contain atleast one uppercase one lowercase, and one special character`,
+        message: () =>
+          `This password is not a secure password. Password must be alphanumeric, must contain atleast one uppercase one lowercase, and one special character`,
       },
     },
 
@@ -89,6 +89,24 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+userSchema.pre('save', async function (next: any) {
+  if (!this.isModified('password')) {
+    next();
+  }
+
+  this.password = await bcrypt.hash(this.password, 10);
+});
+
+userSchema.methods.getJWTToken = function () {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET as string, {
+    expiresIn: process.env.JWT_EXPIRE as string,
+  });
+};
+
+userSchema.methods.comparePassword = async function (password: string) {
+  return await bcrypt.compare(password, this.password);
+};
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
 
