@@ -1,6 +1,3 @@
-Certainly, if you want to simplify your documentation and remove the detailed guide and API reference sections, you can do so. Here's the revised documentation structure:
-
-```markdown
 # Threads Social Media Web App Documentation
 
 Welcome to the documentation for the Threads Social Media Web App. This document provides an overview of the project, its features, and instructions on how to set up and use the application.
@@ -50,8 +47,3 @@ We welcome contributions from the community. If you'd like to contribute to Thre
 ## 6. License
 
 Threads is open-source software licensed under the [MIT License](/LICENSE). You are free to use, modify, and distribute this software in accordance with the terms of the license.
-
----
-
-This simplified structure focuses on the essential aspects of your project and makes it easier for users and contributors to get started and understand the core features.
-```
