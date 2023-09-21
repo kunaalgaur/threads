@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Certainly, if you want to simplify your documentation and remove the detailed guide and API reference sections, you can do so. Here's the revised documentation structure:
 
-## Getting Started
+```markdown
+# Threads Social Media Web App Documentation
 
-First, run the development server:
+Welcome to the documentation for the Threads Social Media Web App. This document provides an overview of the project, its features, and instructions on how to set up and use the application.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Installation](#installation)
+4. [Getting Started](#getting-started)
+5. [Contributing](#contributing)
+6. [License](#license)
+
+## 1. Introduction
+
+Threads is a social media web application that allows users to connect with friends, share updates, and engage in discussions. It provides a platform for creating and participating in threaded conversations, sharing multimedia content, and building online communities.
+
+## 2. Features
+
+- User Authentication: Secure user registration and login.
+- User Profiles: Customize user profiles with avatars, bios, and contact information.
+- Posts and Threads: Create, edit, and delete posts and participate in threaded conversations.
+- Media Sharing: Upload and share images and videos in posts.
+- Likes and Comments: Interact with posts through likes and comments.
+- Notifications: Receive notifications for new comments and likes.
+- Privacy Settings: Control the visibility of your posts and profile.
+- Search Functionality: Search for users, posts, and threads.
+- Real-time Updates: Real-time updates for new posts and notifications.
+
+## 3. Installation
+
+To run Threads on your local machine, follow these steps:
+
+1. Clone the Threads repository: `git clone https://github.com/kunaalgaur/threads.git`
+2. Install dependencies: `npm install`
+3. Set up your environment variables (e.g., database connection).
+4. Start the application: `npm start`
+
+## 4. Getting Started
+
+Once the application is up and running, create an account, set up your profile, and start exploring Threads.
+
+## 5. Contributing
+
+We welcome contributions from the community. If you'd like to contribute to Threads, please read our [Contributing Guidelines](/CONTRIBUTING.md) and follow the development process.
+
+## 6. License
+
+Threads is open-source software licensed under the [MIT License](/LICENSE). You are free to use, modify, and distribute this software in accordance with the terms of the license.
+
+---
+
+This simplified structure focuses on the essential aspects of your project and makes it easier for users and contributors to get started and understand the core features.
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
