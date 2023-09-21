@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Providers } from '@/redux/providers';
 import Navbar from '@/components/shared/Navbar/Navbar';
 import Footer from '@/components/shared/Footer/Footer';
+import ProtectedRoute from '@/components/router/ProtectedRoute/ProtectedRoute';
 
 export const metadata: Metadata = {
   title: 'Threads',
@@ -15,10 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <Navbar />
-      {children}
-      <Footer />
-    </>
+    <Providers>
+      <ProtectedRoute>
+        <Navbar />
+        {children}
+        <Footer />
+      </ProtectedRoute>
+    </Providers>
   );
 }
