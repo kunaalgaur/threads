@@ -18,7 +18,7 @@ export const signin = createSlice({
   name: 'Sign in',
   initialState,
   reducers: {
-    request: (state: InitialState) => {
+    request: (state) => {
       state.error = null;
       state.loading = true;
       state.userId = null;
