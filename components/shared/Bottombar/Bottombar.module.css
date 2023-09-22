@@ -1,0 +1,29 @@
+#container {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    font-size: xx-large;
+    height: 60px;
+    backdrop-filter: blur(10px) brightness(50%);
+    z-index: 90;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.link {
+    color: grey;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: white;
+}
+
+@media (orientation: portrait) {
+    #container {
+        display: flex;
+    }
+}
