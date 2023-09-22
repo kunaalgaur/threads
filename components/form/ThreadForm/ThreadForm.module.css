@@ -83,3 +83,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media (orientation: portrait) {
+  #form {
+    width: 90%;
+  }
+}
