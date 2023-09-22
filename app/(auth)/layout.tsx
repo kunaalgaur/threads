@@ -1,6 +1,7 @@
 import { Providers } from '@/redux/providers';
 import '../globals.css';
 import type { Metadata } from 'next';
+import PublicRoute from '@/components/router/PublicRoute/PublicRoute';
 
 export const metadata: Metadata = {
   title: 'Threads',
@@ -12,5 +13,6 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <Providers>{children}</Providers>;
+  return <PublicRoute>{children}</PublicRoute>;
+  // return <>{children}</>;
 }
