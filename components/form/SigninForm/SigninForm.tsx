@@ -18,25 +18,47 @@ const SigninForm = () => {
   const [password, setPassword] = useState<string>();
 
   const handleSubmit = async (e: any) => {
+    // to prevent to page from reloading
     e.preventDefault();
+
+    // initialize the request reducer
     dispatch(request());
+
     try {
+      // setting the loading state to true
       setLoading(true);
+
       const credentials = { email: email, password: password };
+
+      // hitting the signin api
       const res = await fetch('/api/auth/sign-in', {
         method: 'POST',
         body: JSON.stringify(credentials),
       });
+
       const response = await res.json();
+
+      // sending error to front end if the response is incorrect
       if (!res.ok) {
         return toast.error(response.message);
       }
+
       const user = response.user;
       const token = response.token;
-      console.log(user);
+
+      // saving the response in local storage
+      localStorage.setItem('userId', user._id);
+      localStorage.setItem('token', token);
+
+      // implement this logic if the response is okay
       if (res.ok) {
+        // initializing the success reducer if the api is fetched successfully
         dispatch(success({ userId: user._id, token: token }));
+
+        // send a success message
         toast.success(response.message);
+
+        // redirect the user to '/onboarding' if the user is not onboarded and to '/' is the user is onboarded
         if (!user.username) {
           return router.push('/onboarding');
         } else {
@@ -44,9 +66,13 @@ const SigninForm = () => {
         }
       }
     } catch (error: any) {
+      // initialize the failure reducer
       dispatch(failure(error));
+
+      // return an error message in front end
       return toast.error(error.message);
     } finally {
+      // and finally set loading to false
       return setLoading(false);
     }
   };
