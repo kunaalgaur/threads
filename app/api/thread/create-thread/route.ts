@@ -14,7 +14,7 @@ export const POST = async (req: Request) => {
       return NextResponse.json({
         status: 404,
         name: 'Custom Error',
-        message: 'Username',
+        message: 'User not found',
       });
     }
 

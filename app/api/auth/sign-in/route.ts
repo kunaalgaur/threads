@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken';
 export const POST = async (req: Request) => {
   try {
     // Create a connection with DB
-    connectDB();
+    await connectDB();
 
     const { email, password } = await req.json();
 
@@ -15,7 +15,7 @@ export const POST = async (req: Request) => {
     if (!user) {
       return NextResponse.json({
         status: 404,
-        name: 'CustomE Error',
+        name: 'Custom Error',
         message: 'This email is not registered, try signing up.',
       });
     }
@@ -45,17 +45,11 @@ export const POST = async (req: Request) => {
       verifyTokenExpiry: undefined,
     };
 
-    const response = NextResponse.json({
+    return NextResponse.json({
       user: userImpData,
       token: token,
       message: 'You are successfully logged in.',
     });
-
-    response.cookies.set('token', token, {
-      httpOnly: true,
-    });
-
-    return response;
   } catch (error: any) {
     return NextResponse.json({
       status: 500,
