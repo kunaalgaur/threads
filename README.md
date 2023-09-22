@@ -34,7 +34,7 @@ To run Threads on your local machine, follow these steps:
 1. Clone the Threads repository: `git clone https://github.com/kunaalgaur/threads.git`
 2. Install dependencies: `npm install`
 3. Set up your environment variables (e.g., database connection).
-4. Start the application: `npm start`
+4. Start the application: `npm run dev`
 
 ## 4. Getting Started
 
