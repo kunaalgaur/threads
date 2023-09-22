@@ -1,23 +1,32 @@
 #container {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
 }
 
 #top {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  font-size: small;
-  color: grey;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: small;
+    color: grey;
+    text-align: center;
 }
 
 #bottom {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  font-size: xx-small;
-  color: #8080804c;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: xx-small;
+    color: #8080804c;
+}
+
+@media (orientation: portrait) {
+    #container {
+        display: none;
+    }
 }

@@ -3,47 +3,49 @@
 import Link from 'next/link';
 import styles from './NavbarMiddle.module.css';
 import {
-  HiOutlineHome,
-  HiOutlineMagnifyingGlass,
-  HiOutlineHeart,
-  HiOutlineUser,
-  HiOutlinePencilSquare,
+    HiOutlineHome,
+    HiOutlineMagnifyingGlass,
+    HiOutlineHeart,
+    HiOutlineUser,
+    HiOutlinePencilSquare,
 } from 'react-icons/hi2';
 import ThreadForm from '@/components/form/ThreadForm/ThreadForm';
 import { useState } from 'react';
 
 const NavbarMiddle = () => {
-  const [toggle, setToggle] = useState(false);
+    const userId = localStorage.getItem('userId') as string;
 
-  const handleClick = () => {
-    setToggle(!toggle);
-  };
-  return (
-    <>
-      <div id={styles.container}>
-        <Link href="/" className={styles.link}>
-          <HiOutlineHome />
-        </Link>
+    const [toggle, setToggle] = useState(false);
 
-        <Link href="/search" className={styles.link}>
-          <HiOutlineMagnifyingGlass />
-        </Link>
+    const handleClick = () => {
+        setToggle(!toggle);
+    };
+    return (
+        <>
+            <div id={styles.container}>
+                <Link href="/" className={styles.link}>
+                    <HiOutlineHome />
+                </Link>
 
-        <div className={styles.link} onClick={handleClick}>
-          <HiOutlinePencilSquare />
-        </div>
+                <Link href="/search" className={styles.link}>
+                    <HiOutlineMagnifyingGlass />
+                </Link>
 
-        <Link href="" className={styles.link}>
-          <HiOutlineHeart />
-        </Link>
+                <div className={styles.link} onClick={handleClick}>
+                    <HiOutlinePencilSquare />
+                </div>
 
-        <Link href="" className={styles.link}>
-          <HiOutlineUser />
-        </Link>
-      </div>
-      <ThreadForm state={toggle} toggleState={handleClick} />
-    </>
-  );
+                <Link href="/activity" className={styles.link}>
+                    <HiOutlineHeart />
+                </Link>
+
+                <Link href={`/profile/${userId}`} className={styles.link}>
+                    <HiOutlineUser />
+                </Link>
+            </div>
+            <ThreadForm state={toggle} toggleState={handleClick} />
+        </>
+    );
 };
 
 export default NavbarMiddle;

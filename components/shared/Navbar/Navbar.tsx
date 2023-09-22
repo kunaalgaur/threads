@@ -6,13 +6,13 @@ import NavbarMiddle from './NavbarMiddle/NavbarMiddle';
 import NavbarRight from './NavbarRight/NavbarRight';
 
 const Navbar = () => {
-  return (
-    <div id={styles.container}>
-      <FaThreads />
-      <NavbarMiddle />
-      <NavbarRight />
-    </div>
-  );
+    return (
+        <div id={styles.container}>
+            <FaThreads />
+            <NavbarMiddle />
+            <NavbarRight />
+        </div>
+    );
 };
 
 export default Navbar;
