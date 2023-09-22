@@ -2,15 +2,12 @@ import User from '@/lib/models/User.model';
 import connectDB from '@/lib/mongoose';
 import { NextResponse } from 'next/server';
 
-export const GET = async (
-  req: Request,
-  { params }: { params: { userId: string } }
-) => {
+export const GET = async ({ params }: { params: { username: string } }) => {
   try {
     await connectDB();
 
-    const userId = params.userId;
-    const user = await User.findById(userId);
+    const username = params.username;
+    const user = await User.findOne({ username: username });
     if (!user) {
       return NextResponse.json({
         status: 403,
@@ -19,13 +16,16 @@ export const GET = async (
       });
     }
 
-    const userWithoutPassword = { ...user.toObject(), password: undefined };
+    const userImpData = {
+      ...user.toObject(),
+      password: undefined,
+      forgotPasswordToken: undefined,
+      forgotPasswordTokenExpiry: undefined,
+      verifyToken: undefined,
+      verifyTokenExpiry: undefined,
+    };
 
-    return NextResponse.json({
-      status: 200,
-      data: userWithoutPassword,
-      message: 'User found successfully.',
-    });
+    return NextResponse.json({ user: userImpData }, { status: 200 });
   } catch (error: any) {
     return NextResponse.json({
       status: 500,
