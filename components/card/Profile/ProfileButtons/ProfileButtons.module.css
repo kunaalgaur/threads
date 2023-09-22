@@ -1,0 +1,19 @@
+#container {
+    display: flex;
+    gap: 3vw;
+    padding: 3vw;
+}
+
+.button {
+    border: 1px solid #80808055;
+    border-radius: 50px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: none;
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
