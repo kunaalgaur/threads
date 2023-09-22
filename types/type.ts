@@ -1,19 +1,19 @@
 export type User = {
-  _id: string;
-  name: string;
-  username: string | null;
-  image: string | null;
-  email: string;
-  password: string;
-  followers: object;
-  followings: object;
+    _id: string;
+    name: string;
+    email: string;
+    username: string | null;
+    image: string | null;
+    bio: string | null;
+    followers: string[];
+    followings: string[];
 };
 
 export type Post = {
-  _id: string;
-  userId: string;
-  caption: string | null;
-  image: string | null;
-  likes: object;
-  children: object;
+    _id: string;
+    userId: string;
+    caption: string | null;
+    image: string | null;
+    likes: string[];
+    children: string[];
 };
