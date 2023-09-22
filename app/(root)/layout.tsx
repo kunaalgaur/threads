@@ -16,12 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Providers>
-      <ProtectedRoute>
-        <Navbar />
-        {children}
-        <Footer />
-      </ProtectedRoute>
-    </Providers>
+    <ProtectedRoute>
+      <Navbar />
+      {children}
+      <Footer />
+    </ProtectedRoute>
   );
 }
