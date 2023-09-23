@@ -1,0 +1,41 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-bottom: 1px solid #80808055;
+    width: 100%;
+}
+
+#top {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+#userImage {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+#rightTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#postImage {
+    border-radius: 10px;
+    object-fit: cover;
+    aspect-ratio: auto;
+}
+
+#imageWrapper {
+    max-height: 40vh;
+}

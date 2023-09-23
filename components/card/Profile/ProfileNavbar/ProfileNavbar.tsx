@@ -7,10 +7,10 @@ const ProfileNavbar = ({ userId }: { userId: string }) => {
             <Link href={`/profile/${userId}`} className={styles.link}>
                 Threads
             </Link>
-            <Link href={`/replies/${userId}`} className={styles.link}>
+            <Link href={`/profile/replies/${userId}`} className={styles.link}>
                 Replies
             </Link>
-            <Link href={`/reposts/${userId}`} className={styles.link}>
+            <Link href={`/profile/reposts/${userId}`} className={styles.link}>
                 Reposts
             </Link>
         </div>
