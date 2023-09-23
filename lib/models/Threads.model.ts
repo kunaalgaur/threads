@@ -23,6 +23,7 @@ const threadsSchema: Schema<IThreads> = new mongoose.Schema(
                 ref: 'User',
             },
         ],
+
         children: [
             {
                 type: Schema.Types.ObjectId,
@@ -44,7 +45,6 @@ threadsSchema.pre('validate', function (next) {
 });
 
 const Thread =
-    mongoose.models.Thread ||
-    mongoose.model<IThreads>('threads', threadsSchema);
+    mongoose.models.Thread || mongoose.model('Thread', threadsSchema);
 
 export default Thread;
