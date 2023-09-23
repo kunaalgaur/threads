@@ -4,9 +4,10 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import styles from './ThreadForm.module.css';
 import { HiXMark } from 'react-icons/hi2';
 import ReactLoading from 'react-loading';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { failure, request, success } from '@/redux/slice/threadSlice';
+import { User } from '@/types/type';
 
 const userId = localStorage.getItem('userId') as string;
 
@@ -19,9 +20,30 @@ const ThreadForm = ({
 }) => {
     const [image, setImage] = useState<string | null>(null);
     const [caption, setCaption] = useState<string | null>(null);
+    const [user, setUser] = useState<User | null>(null);
+
     const dispatch = useAppDispatch();
 
     const { loading } = useAppSelector((state) => state.thread);
+
+    useEffect(() => {
+        const getUser = async () => {
+            const res = await fetch(`/api/user/get-user/${userId}`, {
+                method: 'GET',
+            });
+
+            if (!res.ok) {
+                throw new Error('An unexprected error happened');
+            }
+
+            if (res.ok) {
+                const response = await res.json();
+
+                return setUser(response.user);
+            }
+        };
+        getUser();
+    }, [userId]);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -90,17 +112,19 @@ const ThreadForm = ({
                     <div id={styles.top}>
                         <div id={styles.left}>
                             <Image
-                                src={'/user.png'}
+                                src={user?.image || '/user.png'}
                                 alt=""
                                 height={50}
                                 width={50}
+                                style={{ borderRadius: '50%' }}
                             />
                         </div>
 
                         <div id={styles.right}>
                             <div>
-                                {/* <span id={styles.username}>{user?.username}</span> */}
-                                <span id={styles.username}>kunalgaur</span>
+                                <span id={styles.username}>
+                                    @{user?.username}
+                                </span>
 
                                 <textarea
                                     name="caption"
