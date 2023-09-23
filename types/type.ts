@@ -11,9 +11,14 @@ export type User = {
 
 export type Post = {
     _id: string;
-    userId: string;
+    userId: {
+        _id: string;
+        username: string;
+        image: string;
+    };
     caption: string | null;
     image: string | null;
     likes: string[];
     children: string[];
+    createdAt: string;
 };
