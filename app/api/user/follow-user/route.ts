@@ -7,6 +7,7 @@ export const PUT = async (req: Request) => {
     await connectDB();
 
     const { userId, friendId } = await req.json();
+    
     const user = await User.findById(userId);
     const friend = await User.findById(friendId);
 

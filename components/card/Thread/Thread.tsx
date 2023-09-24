@@ -55,6 +55,8 @@ const Thread = ({ post }: { post: Post }) => {
                     <Image src="/user.png" alt="" height={15} width={15} />
 
                     <Image src="/user.png" alt="" height={15} width={15} />
+
+                    <span>{post?.likes.length} likes</span>
                 </div>
             </div>
 
