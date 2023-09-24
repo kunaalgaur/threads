@@ -12,6 +12,7 @@ body {
 
 #container {
     padding: 0 30%;
+    min-height: calc(100vh - 160px);
 }
 
 .custom-class {

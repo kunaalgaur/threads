@@ -1,0 +1,39 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+#top {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+#wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    width: 100%;
+    background-color: #1f1f1f;
+    border-radius: 50px;
+    border: 1px solid #80808055;
+    padding: 0 20px;
+    margin-top: 10px;
+}
+
+#searchIcon {
+    font-size: large;
+}
+
+#searchInput {
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+}

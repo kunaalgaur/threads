@@ -1,0 +1,23 @@
+#container {
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+}
+
+#left {
+    border-radius: 50%;
+}
+
+#right {
+    display: flex;
+    flex-direction: column;
+}
+
+#name {
+    color: white;
+}
+
+#username {
+    color: grey;
+    font-size: small;
+}
