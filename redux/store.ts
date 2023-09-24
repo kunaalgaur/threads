@@ -3,6 +3,7 @@ import signinReducer from './slice/signinSlice';
 import threadReducer from './slice/threadSlice';
 import signupReducer from './slice/signupSlice';
 import onboardingSlice from './slice/onboardingSlice';
+import profileSlice from './slice/profileSlice';
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         signin: signinReducer,
         thread: threadReducer,
         onboarding: onboardingSlice,
+        profile: profileSlice
     },
 });
 
