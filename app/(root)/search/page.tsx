@@ -27,7 +27,7 @@ const page = () => {
                 </div>
             </div>
 
-            <div>
+            <div id={styles.bottom}>
                 {filteredItems.map((item: any) => {
                     return <User user={item} />;
                 })}
