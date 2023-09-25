@@ -1,81 +1,29 @@
 'use client';
 
-import { failure, request, success } from '@/redux/slice/onboardingSlice';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { UploadButton } from '../../../utils/uploadthing';
+import { useOnboarding } from '@/hooks/useOnboarding';
 import styles from './OnboardingForm.module.css';
-import { useRouter } from 'next/navigation';
+import { useAppSelector } from '@/redux/hooks';
 import ReactLoading from 'react-loading';
 import React, { useState } from 'react';
 import '@uploadthing/react/styles.css';
-import toast from 'react-hot-toast';
 import Image from 'next/image';
-import { currentUserId } from '@/constants/variable';
 
 const OnboardingForm = () => {
-    const router = useRouter();
-    const dispatch = useAppDispatch();
-
     const [image, setImage] = useState<string | null>(null);
     const [username, setUsername] = useState<string | null>(null);
     const [bio, setBio] = useState<string | null>(null);
 
     const { loading } = useAppSelector((state) => state.onboarding);
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-
-        const details = {
-            userId: currentUserId,
-            image: image,
-            username: username,
-            bio: bio,
-        };
-
-        dispatch(request());
-
-        try {
-            const res = await fetch('/api/auth/onboarding', {
-                method: 'PUT',
-                body: JSON.stringify(details),
-            });
-
-            const response = await res.json();
-
-            if (!res.ok) {
-                return toast.error(response.message, {
-                    style: {
-                        borderRadius: '10px',
-                        background: '#333',
-                        color: '#fff',
-                    },
-                    duration: 6000,
-                });
-            }
-
-            if (res.ok) {
-                toast.success(response.message, {
-                    style: {
-                        borderRadius: '10px',
-                        background: '#333',
-                        color: '#fff',
-                    },
-                    duration: 6000,
-                });
-
-                router.push('/');
-
-                return dispatch(success());
-            }
-        } catch (error: any) {
-            toast.error(error.message);
-
-            return dispatch(failure(error));
-        }
-    };
+    const handleOnboarding = useOnboarding({
+        image: image as string,
+        username: username as string,
+        bio: bio as string,
+    });
 
     return (
-        <form action="" id={styles.container} onSubmit={handleSubmit}>
+        <form action="" id={styles.container} onSubmit={handleOnboarding}>
             <div className={styles.children}>
                 <div id={styles.top}>
                     <label htmlFor="image" id={styles.imageLabel}>
