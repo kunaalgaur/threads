@@ -10,8 +10,7 @@ import styles from './ThreadForm.module.css';
 import { HiXMark } from 'react-icons/hi2';
 import ReactLoading from 'react-loading';
 import Image from 'next/image';
-
-const userId = localStorage.getItem('userId') as string;
+import { currentUserId } from '@/constants/variable';
 
 const ThreadForm = ({
     state,
@@ -22,7 +21,7 @@ const ThreadForm = ({
 }) => {
     const dispatch = useAppDispatch();
 
-    const user = useFetchUser(userId as string);
+    const user = useFetchUser(currentUserId as string);
 
     const [image, setImage] = useState<string | null>(null);
     const [caption, setCaption] = useState<string | null>(null);
@@ -41,7 +40,7 @@ const ThreadForm = ({
             const res = await fetch('/api/thread/create-thread', {
                 method: 'POST',
                 body: JSON.stringify({
-                    userId: userId,
+                    userId: currentUserId,
                     image: image,
                     caption: caption,
                 }),

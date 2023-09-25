@@ -1,4 +1,4 @@
-import { User } from '@/types/type';
+import { User } from '@/constants/type';
 import Image from 'next/image';
 import Link from 'next/link';
 import ProfileButtons from './ProfileButtons/ProfileButtons';

@@ -8,19 +8,19 @@ import {
     HiOutlineArrowPathRoundedSquare,
     HiOutlinePaperAirplane,
 } from 'react-icons/hi2';
-import { Post } from '@/types/type';
+import { Post } from '@/constants/type';
 import moment from 'moment';
 import { useLikeThread } from '@/hooks/useLikeThread';
-
-const userId = localStorage.getItem('userId') as string;
+import { currentUserId } from '@/constants/variable';
 
 const Thread = ({ post }: { post: Post }) => {
     const relativeTime = moment(post?.createdAt).fromNow();
 
-    const [likes, handleLike] = useLikeThread(post?._id, {
+    const [likes, isLiked, handleLike] = useLikeThread(post?._id, {
         threadLikes: post?.likes.length,
-        isThreadLiked: post?.likes.includes(userId),
+        isThreadLiked: post?.likes.includes(currentUserId),
     });
+
     return (
         <div id={styles.container}>
             <div id={styles.top}>

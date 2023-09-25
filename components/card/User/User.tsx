@@ -1,4 +1,4 @@
-import { User } from '@/types/type';
+import { User } from '@/constants/type';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './User.module.css';

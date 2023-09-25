@@ -54,8 +54,10 @@ const SigninForm = () => {
             const token = response.token;
 
             // saving the response in local storage
-            localStorage.setItem('userId', user._id);
-            localStorage.setItem('token', token);
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('userId', user._id);
+                localStorage.setItem('token', token);
+            }
 
             // implement this logic if the response is okay
             if (res.ok) {

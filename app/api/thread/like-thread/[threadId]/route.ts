@@ -3,7 +3,10 @@ import User from '@/lib/models/User.model';
 import connectDB from '@/lib/mongoose';
 import { NextResponse } from 'next/server';
 
-export const PUT = async (req: Request, params: { threadId: string }) => {
+export const PUT = async (
+    req: Request,
+    { params }: { params: { threadId: string } }
+) => {
     try {
         await connectDB();
 
@@ -31,17 +34,29 @@ export const PUT = async (req: Request, params: { threadId: string }) => {
         }
 
         if (thread.likes.includes(userId)) {
-            await thread.likes.pull(userId);
+            await thread.updateOne({
+                $pull: { likes: userId },
+            });
 
             return NextResponse.json({
                 message: 'Thread disliked.',
             });
         } else {
-            await thread.likes.push(userId);
+            await thread.updateOne({
+                $push: { likes: userId },
+            });
 
             return NextResponse.json({
                 message: 'Thread liked.',
             });
         }
-    } catch (error: any) {}
+    } catch (error: any) {
+        return NextResponse.json(
+            {
+                name: error.name,
+                message: error.message,
+            },
+            { status: 500 }
+        );
+    }
 };

@@ -11,7 +11,7 @@ body {
 }
 
 #container {
-    padding: 0 30%;
+    padding: 0 25%;
     min-height: calc(100vh - 160px);
 }
 

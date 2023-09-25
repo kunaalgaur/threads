@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import '@uploadthing/react/styles.css';
 import toast from 'react-hot-toast';
 import Image from 'next/image';
+import { currentUserId } from '@/constants/variable';
 
 const OnboardingForm = () => {
     const router = useRouter();
@@ -21,13 +22,11 @@ const OnboardingForm = () => {
 
     const { loading } = useAppSelector((state) => state.onboarding);
 
-    const userId = localStorage.getItem('userId') as string;
-
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
         const details = {
-            userId: userId,
+            userId: currentUserId,
             image: image,
             username: username,
             bio: bio,

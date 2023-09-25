@@ -11,10 +11,9 @@ import {
 } from 'react-icons/hi2';
 import ThreadForm from '@/components/form/ThreadForm/ThreadForm';
 import { useState } from 'react';
+import { currentUserId } from '@/constants/variable';
 
 const Bottombar = () => {
-    const userId = localStorage.getItem('userId') as string;
-
     const [toggle, setToggle] = useState(false);
 
     const handleClick = () => {
@@ -39,7 +38,9 @@ const Bottombar = () => {
                     <HiOutlineHeart />
                 </Link>
 
-                <Link href={`/profile/${userId}`} className={styles.link}>
+                <Link
+                    href={`/profile/${currentUserId}`}
+                    className={styles.link}>
                     <HiOutlineUser />
                 </Link>
             </div>

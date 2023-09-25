@@ -3,11 +3,10 @@
 import Link from 'next/link';
 import styles from './ProfileButtons.module.css';
 import toast, { Toaster } from 'react-hot-toast';
-
-const currentUser = localStorage.getItem('userId');
+import { currentUserId } from '@/constants/variable';
 
 const ProfileButtons = ({ userId }: { userId: string }) => {
-    if (userId === currentUser) {
+    if (userId === currentUserId) {
         return (
             <div id={styles.container}>
                 <Link

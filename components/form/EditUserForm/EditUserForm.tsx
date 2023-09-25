@@ -16,8 +16,6 @@ import styles from './EditUserForm.module.css';
 import toast from 'react-hot-toast';
 import { useParams } from 'next/navigation';
 
-const currentUserId = localStorage.getItem('userId') as string;
-
 const EditUserForm = () => {
     const dispatch = useAppDispatch();
 

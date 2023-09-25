@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@/redux/hooks';
 import { failure, request, success } from '@/redux/slice/profileSlice';
-import { User } from '@/types/type';
+import { User } from '@/constants/type';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 

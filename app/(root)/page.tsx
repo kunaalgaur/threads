@@ -1,5 +1,5 @@
 import Thread from '@/components/card/Thread/Thread';
-import { Post } from '@/types/type';
+import { Post } from '@/constants/type';
 import axios from 'axios';
 import React from 'react';
 

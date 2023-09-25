@@ -16,8 +16,8 @@ export const useLikeThread = (
 
     const handleLike = async () => {
         try {
-            setIsLiked(!isLiked);
             setLikes(isLiked ? likes - 1 : likes + 1);
+            setIsLiked(!isLiked);
 
             await fetch(`/api/thread/like-thread/${threadId}`, {
                 method: 'PUT',
@@ -27,5 +27,5 @@ export const useLikeThread = (
         }
     };
 
-    return [likes, handleLike];
+    return [likes, isLiked, handleLike];
 };

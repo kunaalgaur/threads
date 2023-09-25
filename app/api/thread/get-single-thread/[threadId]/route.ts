@@ -27,10 +27,12 @@ export const GET = async (
             message: 'Thread found',
         });
     } catch (error: any) {
-        return NextResponse.json({
-            status: 500,
-            name: error.name,
-            message: error.message,
-        });
+        return NextResponse.json(
+            {
+                name: error.name,
+                message: error.message,
+            },
+            { status: 500 }
+        );
     }
 };

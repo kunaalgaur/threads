@@ -3,13 +3,16 @@
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-
-const token = localStorage.getItem('token') as string;
+import { token } from '@/constants/variable';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     const router = useRouter();
 
     const verifyToken = async () => {
+        if (!token) {
+            return router.push('/sign-in');
+        }
+
         try {
             const res = await fetch('/api/auth/verify-token', {
                 method: 'POST',
@@ -30,10 +33,6 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         verifyToken();
-
-        if (!token) {
-            return router.push('/sign-in');
-        }
     }, [token]);
 
     return (
