@@ -1,10 +1,10 @@
-import { useAppDispatch } from '@/redux/hooks';
 import { failure, request, success } from '@/redux/slice/profileSlice';
-import { User } from '@/constants/type';
+import { useAppDispatch } from '@/redux/hooks';
 import { useEffect, useState } from 'react';
+import { User } from '@/constants/type';
 import toast from 'react-hot-toast';
 
-export const useFetchUser = (userId: string | null) => {
+export const useFetchUser = (userId: string) => {
     const dispatch = useAppDispatch();
     const [user, setUser] = useState<User>();
 
