@@ -1,13 +1,15 @@
+'use client';
+
+import { failure, request, success } from '@/redux/slice/threadSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useFetchUser } from '@/hooks/useFetchUser';
 import { UploadButton } from '@/utils/uploadthing';
 import toast, { Toaster } from 'react-hot-toast';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useEffect, useState } from 'react';
 import styles from './ThreadForm.module.css';
 import { HiXMark } from 'react-icons/hi2';
 import ReactLoading from 'react-loading';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { failure, request, success } from '@/redux/slice/threadSlice';
-import { User } from '@/types/type';
 
 const userId = localStorage.getItem('userId') as string;
 
@@ -18,32 +20,13 @@ const ThreadForm = ({
     state: boolean;
     toggleState: any;
 }) => {
-    const [image, setImage] = useState<string | null>(null);
-    const [caption, setCaption] = useState<string | null>(null);
-    const [user, setUser] = useState<User | null>(null);
-
     const dispatch = useAppDispatch();
 
+    const user = useFetchUser(userId as string);
+
+    const [image, setImage] = useState<string | null>(null);
+    const [caption, setCaption] = useState<string | null>(null);
     const { loading } = useAppSelector((state) => state.thread);
-
-    useEffect(() => {
-        const getUser = async () => {
-            const res = await fetch(`/api/user/get-user/${userId}`, {
-                method: 'GET',
-            });
-
-            if (!res.ok) {
-                throw new Error('An unexprected error happened');
-            }
-
-            if (res.ok) {
-                const response = await res.json();
-
-                return setUser(response.user);
-            }
-        };
-        getUser();
-    }, [userId]);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
