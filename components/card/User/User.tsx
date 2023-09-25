@@ -5,7 +5,7 @@ import styles from './User.module.css';
 
 const User = ({ user }: { user: User }) => {
     return (
-        <Link href={`/profile/${user._id}`} id={styles.container}>
+        <Link href={`/profile/${user?._id}`} id={styles.container}>
             <Image
                 src={user?.image || `/user.png`}
                 alt=""
