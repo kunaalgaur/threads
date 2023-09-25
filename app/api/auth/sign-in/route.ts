@@ -1,8 +1,6 @@
 import User from '@/lib/models/User.model';
 import connectDB from '@/lib/mongoose';
 import { NextResponse } from 'next/server';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 
 export const POST = async (req: Request) => {
   try {
