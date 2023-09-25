@@ -1,6 +1,6 @@
 'use client';
 
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useAppSelector } from '@/redux/hooks';
 import Profile from '@/components/card/Profile/Profile';
 import { useParams } from 'next/navigation';
 import ReactLoading from 'react-loading';
