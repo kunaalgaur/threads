@@ -1,41 +1,56 @@
+'use client';
+
 import Thread from '@/components/card/Thread/Thread';
-import { Post } from '@/constants/type';
-import axios from 'axios';
-import React from 'react';
+import { useGetThreads } from '@/hooks/useGetThreads';
+import { useAppSelector } from '@/redux/hooks';
+import { useState } from 'react';
+import ReactLoading from 'react-loading';
+import styles from './page.module.css';
 
-let pageNumber = 1;
+const page = () => {
+    const [pageNumber, setPageNumber] = useState<number>(1);
+    const threads = useGetThreads(pageNumber);
+    const { loading } = useAppSelector((state) => state.getThreads);
 
-const getThreads = async () => {
-    try {
-        const res = await axios.get(
-            `http://localhost:3000/api/thread/get-all-thread/?results=15&page=${pageNumber}`
+    if (loading) {
+        return (
+            <div
+                style={{
+                    display: 'grid',
+                    placeItems: 'center',
+                    height: 'calc(100vh - 160px)',
+                }}>
+                <ReactLoading
+                    type="spin"
+                    color="white"
+                    height={50}
+                    width={50}
+                />
+            </div>
         );
-
-        return res.data;
-    } catch (error: any) {
-        console.log(error);
     }
-};
 
-const page = async () => {
-    const threads: Post[] | undefined = await getThreads();
-
-    const handleLike = () => {
-        'use client';
-
-        console.log('hello world');
-    };
-
-    handleLike();
     return (
-        <div>
-            {threads?.length === 0 ? (
-                <span>There are no posts to show.</span>
-            ) : (
-                threads?.map((thread: Post) => {
-                    return <Thread post={thread} key={thread._id} />;
-                })
-            )}
+        <div id={styles.top}>
+            {threads.map((thread) => {
+                return <Thread post={thread} />;
+            })}
+            <div id={styles.bottom}>
+                <div id={styles.buttons}>
+                    <button
+                        onClick={() => () => setPageNumber(pageNumber - 1)}
+                        className={styles.button}>
+                        Prev
+                    </button>
+                    <div id={styles.number}>{pageNumber}</div>
+                    <button
+                        onClick={() => setPageNumber(pageNumber + 1)}
+                        // disabled={threads.length <= 15}
+                        className={styles.button}>
+                        Next
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
