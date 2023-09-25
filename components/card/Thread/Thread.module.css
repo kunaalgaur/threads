@@ -40,7 +40,7 @@
 }
 
 #imageWrapper {
-    width: 80%;
+    width: 60%;
     aspect-ratio: 1/1;
     align-self: center;
 }
@@ -61,4 +61,10 @@
     align-items: center;
     gap: 20px;
     font-size: x-large;
+}
+
+@media (orientation: portrait) {
+    #imageWrapper {
+        width: 100%;
+    }
 }
