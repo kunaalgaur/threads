@@ -1,51 +1,15 @@
 'use client';
 
-import { failure, request, success } from '@/redux/slice/profileSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import Profile from '@/components/card/Profile/Profile';
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import ReactLoading from 'react-loading';
-import toast from 'react-hot-toast';
-import { User } from '@/types/type';
+import { useFetchUser } from '@/hooks/useFetchUser';
 
 const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
     const { userId } = useParams();
-    const dispatch = useAppDispatch();
-
-    const [user, setUser] = useState<User | null>(null);
-
+    const user = useFetchUser(userId as string);
     const { loading } = useAppSelector((state) => state.profile);
-
-    useEffect(() => {
-        dispatch(request());
-        const getUser = async () => {
-            try {
-                const res = await fetch(`/api/user/get-user/${userId}`, {
-                    method: 'GET',
-                });
-
-                const response = await res.json();
-
-                if (!res.ok) {
-                    dispatch(failure(response));
-
-                    throw new Error('An unexprected error happened');
-                }
-
-                if (res.ok) {
-                    dispatch(success());
-
-                    return setUser(response.user);
-                }
-            } catch (error: any) {
-                toast.error(error.message);
-
-                return dispatch(failure(error));
-            }
-        };
-        getUser();
-    }, [userId]);
 
     if (loading) {
         return (

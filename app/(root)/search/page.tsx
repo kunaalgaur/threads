@@ -4,36 +4,12 @@ import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import User from '@/components/card/User/User';
+import { useSearchFilter } from '@/hooks/useSearchFilter';
 
 const page = () => {
-    const [items, setItems] = useState<any[]>([]);
     const [query, setQuery] = useState<string>('');
 
-    useEffect(() => {
-        const fetchItems = async () => {
-            try {
-                const res = await fetch('/api/user/get-all-user');
-
-                const response = await res.json();
-
-                if (!res.ok) {
-                    throw new Error('An unknown error happened.');
-                }
-
-                if (res.ok) {
-                    return setItems(response);
-                }
-            } catch (error: any) {
-                throw new Error(error.message);
-            }
-        };
-
-        fetchItems();
-    }, []);
-
-    const filteredItems = items.filter((item) => {
-        return item.name.toLowerCase().includes(query.toLowerCase());
-    });
+    const filteredItems = useSearchFilter(query);
 
     return (
         <div id={styles.container}>
@@ -50,6 +26,7 @@ const page = () => {
                     />
                 </div>
             </div>
+
             <div>
                 {filteredItems.map((item: any) => {
                     return <User user={item} />;
