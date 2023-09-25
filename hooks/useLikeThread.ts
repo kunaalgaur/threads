@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { threadId } from 'worker_threads';
+import axios from '@/lib/axios';
+import { currentUserId } from '@/constants/variable';
 
 export const useLikeThread = (
     threadId: string,
@@ -19,9 +20,10 @@ export const useLikeThread = (
             setLikes(isLiked ? likes - 1 : likes + 1);
             setIsLiked(!isLiked);
 
-            await fetch(`/api/thread/like-thread/${threadId}`, {
-                method: 'PUT',
-            });
+            await axios.put(
+                `/api/thread/like-thread/${threadId}`,
+                JSON.stringify(currentUserId as string)
+            );
         } catch (error: any) {
             throw new Error(error.message);
         }
