@@ -3,7 +3,7 @@
 Welcome to the documentation for the Threads Social Media Web App. This document provides an overview of the project, its features, and instructions on how to set up and use the application.
 
 To use this application you cna click on this link to continue.
-`https://threads-8zufks6z0-kunaalgaur.vercel.app/`
+https://threads-8zufks6z0-kunaalgaur.vercel.app/
 
 ## Table of Contents
 
