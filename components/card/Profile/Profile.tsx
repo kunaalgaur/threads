@@ -15,7 +15,7 @@ const Profile = ({ user }: { user: User | null }) => {
                 </div>
 
                 <Image
-                    src={user?.image as string}
+                    src={(user?.image as string) || '/user.png'}
                     alt=""
                     height={100}
                     width={100}
