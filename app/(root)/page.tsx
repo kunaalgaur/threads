@@ -1,36 +1,32 @@
 import Thread from '@/components/card/Thread/Thread';
 import { Post } from '@/types/type';
+import axios from 'axios';
 import React from 'react';
 
 let pageNumber = 1;
 
 const getThreads = async () => {
     try {
-        const res = await fetch(
+        const res = await axios.get(
             `http://localhost:3000/api/thread/get-all-thread/?results=15&page=${pageNumber}`
         );
 
-        if (!res.ok) {
-            throw new Error('An unknown error occurred.');
-        }
-
-        if (res.ok) {
-            const data = await res.json();
-
-            // Assuming the response contains an array of Post objects
-            const threads: Post[] = data;
-
-            return threads;
-        }
+        return res.data;
     } catch (error: any) {
-        throw new Error(error.message);
+        console.log(error);
     }
 };
 
 const page = async () => {
     const threads: Post[] | undefined = await getThreads();
 
-    console.log(threads);
+    const handleLike = () => {
+        'use client';
+
+        console.log('hello world');
+    };
+
+    handleLike();
     return (
         <div>
             {threads?.length === 0 ? (
