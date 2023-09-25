@@ -37,3 +37,9 @@
     background: none;
     color: white;
 }
+
+#bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

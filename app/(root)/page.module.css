@@ -1,1 +1,30 @@
+#bottom {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding: 10px;
+}
 
+#buttons {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #80808055;
+    border-bottom: 1px solid #80808055;
+}
+
+.button {
+    padding: 10px;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: none;
+    border-right: 1px solid #80808055;
+    border-left: 1px solid #80808055;
+    outline: none;
+    color: white;
+    cursor: pointer;
+}
+
+#number {
+    padding: 0 10px;
+}
