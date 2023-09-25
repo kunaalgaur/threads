@@ -2,6 +2,9 @@
 
 Welcome to the documentation for the Threads Social Media Web App. This document provides an overview of the project, its features, and instructions on how to set up and use the application.
 
+To use this application you cna click on this link to continue.
+`https://threads-8zufks6z0-kunaalgaur.vercel.app/`
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
@@ -17,15 +20,15 @@ Threads is a social media web application that allows users to connect with frie
 
 ## 2. Features
 
-- User Authentication: Secure user registration and login.
-- User Profiles: Customize user profiles with avatars, bios, and contact information.
-- Posts and Threads: Create, edit, and delete posts and participate in threaded conversations.
-- Media Sharing: Upload and share images and videos in posts.
-- Likes and Comments: Interact with posts through likes and comments.
-- Notifications: Receive notifications for new comments and likes.
-- Privacy Settings: Control the visibility of your posts and profile.
-- Search Functionality: Search for users, posts, and threads.
-- Real-time Updates: Real-time updates for new posts and notifications.
+-   User Authentication: Secure user registration and login.
+-   User Profiles: Customize user profiles with avatars, bios, and contact information.
+-   Posts and Threads: Create, edit, and delete posts and participate in threaded conversations.
+-   Media Sharing: Upload and share images and videos in posts.
+-   Likes and Comments: Interact with posts through likes and comments.
+-   Notifications: Receive notifications for new comments and likes.
+-   Privacy Settings: Control the visibility of your posts and profile.
+-   Search Functionality: Search for users, posts, and threads.
+-   Real-time Updates: Real-time updates for new posts and notifications.
 
 ## 3. Installation
 
