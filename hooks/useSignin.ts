@@ -23,16 +23,14 @@ export const useSignin = ({
                 email,
                 password,
             })
-            .then(async (res) => {
-                const response = await res.data;
+            .then((res) => {
+                const response = res.data;
 
                 const userId = response.user._id;
-                const token = response.token;
 
                 localStorage.setItem('userId', userId);
-                localStorage.setItem('token', token);
 
-                dispatch(success({ userId: userId, token: token }));
+                dispatch(success({ userId: userId }));
 
                 toast.success('Logged in successfully.', {
                     style: {

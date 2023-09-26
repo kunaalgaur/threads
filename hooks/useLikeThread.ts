@@ -20,10 +20,9 @@ export const useLikeThread = (
             setLikes(isLiked ? likes - 1 : likes + 1);
             setIsLiked(!isLiked);
 
-            await axios.put(
-                `/api/thread/like-thread/${threadId}`,
-                JSON.stringify(currentUserId as string)
-            );
+            await axios.put(`/api/thread/like-thread/${threadId}`, {
+                currentUserId,
+            });
         } catch (error: any) {
             throw new Error(error.message);
         }
