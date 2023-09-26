@@ -1,16 +1,16 @@
 'use client';
 
-import { failure, request, success } from '@/redux/slice/threadSlice';
+import { failure, request, success } from '@/redux/slice/thread-slice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { useFetchUser } from '@/hooks/useFetchUser';
+import { currentUserId } from '@/constants/variable';
+import { useFetchUser } from '@/hooks/API calls/GET/useFetchUser';
 import { UploadButton } from '@/utils/uploadthing';
-import toast, { Toaster } from 'react-hot-toast';
-import { useEffect, useState } from 'react';
 import styles from './ThreadForm.module.css';
 import { HiXMark } from 'react-icons/hi2';
 import ReactLoading from 'react-loading';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
 import Image from 'next/image';
-import { currentUserId } from '@/constants/variable';
 
 const ThreadForm = ({
     state,
@@ -90,7 +90,6 @@ const ThreadForm = ({
                 </div>
 
                 <form method="POST" id={styles.form}>
-                    <Toaster position="top-center" reverseOrder={true} />
                     <div id={styles.top}>
                         <div id={styles.left}>
                             <Image

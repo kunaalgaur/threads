@@ -1,8 +1,7 @@
 'use client';
 
-import toast, { Toaster } from 'react-hot-toast';
 import { useAppSelector } from '@/redux/hooks';
-import { useSignup } from '@/hooks/useSignup';
+import { useSignup } from '@/hooks/API calls/POST/useSignup';
 import styles from './SignupForm.module.css';
 import ReactLoading from 'react-loading';
 import { useState } from 'react';
@@ -23,7 +22,6 @@ const SignupForm = () => {
 
     return (
         <form action="" id={styles.container} onSubmit={handleSignup}>
-            <Toaster position="top-center" reverseOrder={true} />
             <label htmlFor="name" className={styles.label}>
                 <span className={styles.text}>Please enter your name</span>
                 <input

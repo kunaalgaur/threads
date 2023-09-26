@@ -4,8 +4,7 @@ import { useAppSelector } from '@/redux/hooks';
 import styles from './SigninForm.module.css';
 import ReactLoading from 'react-loading';
 import { useState } from 'react';
-import { useSignin } from '@/hooks/useSignin';
-import { Toaster } from 'react-hot-toast';
+import { useSignin } from '@/hooks/API calls/POST/useSignin';
 
 const SigninForm = () => {
     const [toggle, setToggle] = useState<boolean>(false);
@@ -21,7 +20,7 @@ const SigninForm = () => {
 
     return (
         <form action="" id={styles.container} onSubmit={handleSubmit}>
-            <Toaster position="top-center" reverseOrder={true} />
+            
             <label htmlFor="email" className={styles.label}>
                 <span className={styles.text}>Please enter your email</span>
                 <input
