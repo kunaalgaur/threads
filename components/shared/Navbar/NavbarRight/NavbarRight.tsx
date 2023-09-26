@@ -1,12 +1,13 @@
 'use client';
 
 import { HiMiniBars3BottomRight } from 'react-icons/hi2';
-import { logout } from '@/redux/slice/signinSlice';
+import { logout } from '@/redux/slice/signin-slice';
 import { useAppDispatch } from '@/redux/hooks';
 import styles from './NavbarRight.module.css';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useSignout } from '@/hooks/API calls/POST/useSignout';
 
 const NavbarRight = () => {
     const dispatch = useAppDispatch();
@@ -18,15 +19,7 @@ const NavbarRight = () => {
         return setToggle(!toggle);
     };
 
-    const handleLogout = () => {
-        localStorage.clear();
-
-        router.push('/sign-in');
-
-        console.log('Hello World');
-
-        return dispatch(logout());
-    };
+    const handleSignout = useSignout();
 
     return (
         <div onClick={handleClick} id={styles.container}>
@@ -46,7 +39,7 @@ const NavbarRight = () => {
                 <span
                     className={styles.link}
                     id={styles.logout}
-                    onClick={() => handleLogout}>
+                    onClick={handleSignout}>
                     Log out
                 </span>
             </div>
