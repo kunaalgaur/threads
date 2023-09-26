@@ -4,7 +4,7 @@ export type User = {
     email: string;
     username: string | null;
     image: string | null;
-    bio: string | null;
+    bio: string;
     followers: string[];
     followings: string[];
 };
