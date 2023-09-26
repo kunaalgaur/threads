@@ -2,16 +2,16 @@ import User from '@/lib/models/User.model';
 import connectDB from '@/lib/mongoose';
 import { NextResponse } from 'next/server';
 
-export const GET = async (
+export const PUT = async (
     req: Request,
     { params }: { params: { userId: string } }
 ) => {
-    const user_id = params.userId;
-
     try {
         await connectDB();
 
-        const user = await User.findById(user_id);
+        const userId = params.userId;
+        const user = await User.findById(userId);
+
         if (!user) {
             return NextResponse.json(
                 {
@@ -21,16 +21,23 @@ export const GET = async (
             );
         }
 
-        const userImpData = {
-            ...user.toObject(),
-            password: undefined,
-            forgotPasswordToken: undefined,
-            forgotPasswordTokenExpiry: undefined,
-            verifyToken: undefined,
-            verifyTokenExpiry: undefined,
-        };
-
-        return NextResponse.json({ user: userImpData }, { status: 200 });
+        if (!user.isPrivate) {
+            await user.updateOne({ isPrivate: true });
+            return NextResponse.json(
+                {
+                    message: 'Your account is now private.',
+                },
+                { status: 200 }
+            );
+        } else {
+            await user.updateOne({ isPrivate: false });
+            return NextResponse.json(
+                {
+                    message: 'Your account is now public.',
+                },
+                { status: 200 }
+            );
+        }
     } catch (error: any) {
         return NextResponse.json(
             {

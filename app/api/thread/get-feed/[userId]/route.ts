@@ -1,3 +1,4 @@
+import Thread from '@/lib/models/Threads.model';
 import User from '@/lib/models/User.model';
 import connectDB from '@/lib/mongoose';
 import { NextResponse } from 'next/server';
@@ -6,38 +7,39 @@ export const GET = async (
     req: Request,
     { params }: { params: { userId: string } }
 ) => {
-    const user_id = params.userId;
-
     try {
         await connectDB();
 
-        const user = await User.findById(user_id);
+        const userId = params.userId;
+        const user = await User.findById(userId);
+
         if (!user) {
             return NextResponse.json(
                 {
-                    message: 'User not found',
+                    message: 'User not found.',
                 },
                 { status: 404 }
             );
         }
 
-        const userImpData = {
-            ...user.toObject(),
-            password: undefined,
-            forgotPasswordToken: undefined,
-            forgotPasswordTokenExpiry: undefined,
-            verifyToken: undefined,
-            verifyTokenExpiry: undefined,
-        };
+        const followingsList: string[] = user.followings;
+        const threads = await Thread.find({ userId: { $in: followingsList } });
 
-        return NextResponse.json({ user: userImpData }, { status: 200 });
+        return NextResponse.json(
+            {
+                threads,
+            },
+            { status: 200 }
+        );
     } catch (error: any) {
         return NextResponse.json(
             {
                 name: error.name,
                 message: error.message,
             },
-            { status: 500 }
+            {
+                status: 500,
+            }
         );
     }
 };
