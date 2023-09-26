@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import signinReducer from './slice/signinSlice';
-import threadReducer from './slice/threadSlice';
-import signupReducer from './slice/signupSlice';
-import onboardingSlice from './slice/onboardingSlice';
-import profileSlice from './slice/profileSlice';
-import getThreadsSlice from './slice/getThreadsSlice';
+import signinReducer from './slice/signin-slice';
+import threadReducer from './slice/thread-slice';
+import signupReducer from './slice/signup-slice';
+import onboardingSlice from './slice/onboarding-slice';
+import profileSlice from './slice/profile-slice';
+import getThreadsSlice from './slice/get-all-threads-slice';
 
 export const store = configureStore({
     reducer: {
