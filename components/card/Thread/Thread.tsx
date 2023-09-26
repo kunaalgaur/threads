@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import styles from './Thread.module.css';
 import {
@@ -7,10 +5,11 @@ import {
     HiOutlineChatBubbleOvalLeft,
     HiOutlineArrowPathRoundedSquare,
     HiOutlinePaperAirplane,
+    HiHeart,
 } from 'react-icons/hi2';
 import { Post } from '@/constants/type';
 import moment from 'moment';
-import { useLikeThread } from '@/hooks/useLikeThread';
+import { useLikeThread } from '@/hooks/API calls/PUT/useLikeThread';
 import { currentUserId } from '@/constants/variable';
 
 const Thread = ({ post }: { post: Post }) => {
@@ -41,8 +40,10 @@ const Thread = ({ post }: { post: Post }) => {
 
             <div id={styles.middle}>
                 <span id={styles.caption}>{post?.caption}</span>
-                {post?.image && (
-                    <div id={styles.imageWrapper}>
+                <div
+                    id={styles.imageWrapper}
+                    style={{ display: post?.image ? 'block' : 'none' }}>
+                    {post?.image && (
                         <Image
                             src={post?.image}
                             alt=""
@@ -51,8 +52,8 @@ const Thread = ({ post }: { post: Post }) => {
                             style={{ height: '100%', width: '100%' }}
                             id={styles.postImage}
                         />
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
 
             <div id={styles.bottom}>
@@ -62,11 +63,17 @@ const Thread = ({ post }: { post: Post }) => {
                     <Image src="/user.png" alt="" height={15} width={15} />
                 </div>
 
-                <span>{likes as number} likes</span>
+                <span>{likes} likes</span>
             </div>
 
             <div id={styles.threadButtons}>
-                <HiOutlineHeart onClick={handleLike} />
+                <div onClick={handleLike}>
+                    {isLiked ? (
+                        <HiOutlineHeart />
+                    ) : (
+                        <HiHeart style={{ color: 'tomato' }} />
+                    )}
+                </div>
                 <HiOutlineChatBubbleOvalLeft />
                 <HiOutlineArrowPathRoundedSquare />
                 <HiOutlinePaperAirplane />

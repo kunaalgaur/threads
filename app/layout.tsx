@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import '@uploadthing/react/styles.css';
 import { Poppins } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -19,7 +20,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" className={poppins.className}>
             <body suppressHydrationWarning={true}>
-                <Providers>{children}</Providers>
+                <Providers>
+                    <Toaster position="top-center" reverseOrder={true} />
+                    {children}
+                </Providers>
             </body>
         </html>
     );

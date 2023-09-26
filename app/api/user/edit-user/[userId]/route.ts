@@ -9,7 +9,7 @@ export const PUT = async (req: Request, params: { userId: string }) => {
         const { currentUserId, name, image, bio } = await req.json();
         const userId = params.userId;
 
-        if (!userId !== currentUserId) {
+        if (userId !== currentUserId) {
             return NextResponse.json(
                 {
                     message: 'You cannot access this resource.',

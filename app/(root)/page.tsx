@@ -1,7 +1,7 @@
 'use client';
 
 import Thread from '@/components/card/Thread/Thread';
-import { useGetThreads } from '@/hooks/useGetThreads';
+import { useGetThreads } from '@/hooks/API calls/GET/useGetThreads';
 import { useAppSelector } from '@/redux/hooks';
 import { useState } from 'react';
 import ReactLoading from 'react-loading';
@@ -33,7 +33,7 @@ const page = () => {
     return (
         <div id={styles.top}>
             {threads.map((thread) => {
-                return <Thread post={thread} />;
+                return <Thread post={thread} key={thread._id} />;
             })}
             <div id={styles.bottom}>
                 <div id={styles.buttons}>

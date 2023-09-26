@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import styles from './ProfileButtons.module.css';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { currentUserId } from '@/constants/variable';
 
 const ProfileButtons = ({ userId }: { userId: string }) => {
@@ -23,7 +23,6 @@ const ProfileButtons = ({ userId }: { userId: string }) => {
 
     return (
         <div id={styles.container}>
-            <Toaster position="top-center" />
             <button className={styles.button}>Follow</button>
             <button
                 className={styles.button}
