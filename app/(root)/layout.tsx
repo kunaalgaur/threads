@@ -1,4 +1,3 @@
-import ProtectedRoute from '@/components/router/ProtectedRoute/ProtectedRoute';
 import Bottombar from '@/components/shared/Bottombar/Bottombar';
 import Navbar from '@/components/shared/Navbar/Navbar';
 import Footer from '@/components/shared/Footer/Footer';
@@ -16,11 +15,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <ProtectedRoute>
+        <>
             <Navbar />
             <div id="container">{children}</div>
             <Footer />
             <Bottombar />
-        </ProtectedRoute>
+        </>
     );
 }

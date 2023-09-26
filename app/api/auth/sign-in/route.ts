@@ -46,11 +46,13 @@ export const POST = async (req: Request) => {
             verifyTokenExpiry: undefined,
         };
 
-        return NextResponse.json({
+        const response = NextResponse.json({
             user: userImpData,
-            token: token,
             message: 'You are successfully logged in.',
         });
+
+        response.cookies.set('token', token);
+        return response;
     } catch (error: any) {
         return NextResponse.json({
             status: 500,
