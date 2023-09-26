@@ -4,7 +4,7 @@ import { useAppSelector } from '@/redux/hooks';
 import Profile from '@/components/card/Profile/Profile';
 import { useParams } from 'next/navigation';
 import ReactLoading from 'react-loading';
-import { useFetchUser } from '@/hooks/useFetchUser';
+import { useFetchUser } from '@/hooks/API calls/GET/useFetchUser';
 
 const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
     const { userId } = useParams();

@@ -10,8 +10,8 @@ export const PUT = async (
     try {
         await connectDB();
 
-        const { userId } = await req.json();
         const threadId = params.threadId;
+        const { userId } = await req.json();
 
         const thread = await Thread.findById(threadId);
         if (!thread) {
@@ -33,23 +33,19 @@ export const PUT = async (
             );
         }
 
-        if (thread.likes.includes(userId)) {
-            await thread.updateOne({
-                $pull: { likes: userId },
-            });
+        const hasLiked = thread.likes.includes(userId);
 
-            return NextResponse.json({
-                message: 'Thread disliked.',
-            });
+        if (hasLiked) {
+            await thread.likes.pull(userId);
         } else {
-            await thread.updateOne({
-                $push: { likes: userId },
-            });
-
-            return NextResponse.json({
-                message: 'Thread liked.',
-            });
+            await thread.likes.push(userId);
         }
+
+        await thread.save();
+
+        return NextResponse.json({
+            message: hasLiked ? 'Thread disliked.' : 'Thread liked.',
+        });
     } catch (error: any) {
         return NextResponse.json(
             {

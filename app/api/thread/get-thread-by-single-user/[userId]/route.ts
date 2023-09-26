@@ -23,7 +23,11 @@ export const GET = async (
             );
         }
 
-        const threads = await Thread.find({ userId: userId });
+        const threads = await Thread.find({ userId: userId })
+            .sort({
+                createdAt: -1,
+            })
+            .populate('userId', 'username image');
 
         return NextResponse.json(
             {
