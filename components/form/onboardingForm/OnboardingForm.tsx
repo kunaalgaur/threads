@@ -1,7 +1,7 @@
 'use client';
 
 import { UploadButton } from '../../../utils/uploadthing';
-import { useOnboarding } from '@/hooks/useOnboarding';
+import { useOnboarding } from '@/hooks/API calls/PUT/useOnboarding';
 import styles from './OnboardingForm.module.css';
 import { useAppSelector } from '@/redux/hooks';
 import ReactLoading from 'react-loading';
