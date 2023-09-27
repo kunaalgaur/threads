@@ -16,6 +16,9 @@ const page = () => {
                 <span className={styles.text}>
                     New here ? <Link href="/sign-up">Sign up</Link>
                 </span>
+                <span className={styles.text}>
+                    <Link href="/forgot-password">Forgot Password?</Link>
+                </span>
             </div>
         </div>
     );
