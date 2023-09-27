@@ -1,21 +1,34 @@
 import { configureStore } from '@reduxjs/toolkit';
-import signinReducer from './slice/signin-slice';
-import threadReducer from './slice/thread-slice';
-import signupReducer from './slice/signup-slice';
-import onboardingSlice from './slice/onboarding-slice';
-import profileSlice from './slice/profile-slice';
-import getThreadsSlice from './slice/get-all-threads-slice';
-import followSlice from './slice/follow-slice';
+import signupReducer from './reducers/user/signup-reducer';
+import signinReducer from './reducers/user/signin-reducers';
+import signoutReducer from './reducers/user/signout-reducer';
+import onboardingReducer from './reducers/user/onboarding-reducer';
+import getAllUserReducer from './reducers/user/get-all-user-reducer';
+import getSingleUserReducer from './reducers/user/get-single-user-reducer';
+import editUserReducer from './reducers/user/edit-user-reducer';
+import createThreadReducer from './reducers/thread/create-thread-reducer';
+import deleteThreadReducer from './reducers/thread/delete-thread-reducer';
+import editThreadReducer from './reducers/thread/edit-thread-reducer';
+import getAllThreadReducer from './reducers/thread/get-all-thread-reducer';
+import getFeedReducer from './reducers/thread/get-feed-reducer';
+import getSingleThreadReducer from './reducers/thread/get-single-thread-reducer';
 
 export const store = configureStore({
     reducer: {
         signup: signupReducer,
         signin: signinReducer,
-        thread: threadReducer,
-        onboarding: onboardingSlice,
-        profile: profileSlice,
-        getThreads: getThreadsSlice,
-        follow: followSlice,
+        signout: signoutReducer,
+        onboarding: onboardingReducer,
+        getAllUser: getAllUserReducer,
+        getSingleUser: getSingleUserReducer,
+        editUser: editUserReducer,
+
+        createThread: createThreadReducer,
+        deleteThread: deleteThreadReducer,
+        editThread: editThreadReducer,
+        getAllThread: getAllThreadReducer,
+        getFeed: getFeedReducer,
+        getSingleThread: getSingleThreadReducer,
     },
 });
 
