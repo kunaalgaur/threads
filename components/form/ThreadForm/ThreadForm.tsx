@@ -1,9 +1,7 @@
 'use client';
 
-import { failure, request, success } from '@/redux/slice/thread-slice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { currentUserId } from '@/constants/variable';
-import { useFetchUser } from '@/hooks/API calls/GET/useFetchUser';
 import { UploadButton } from '@/utils/uploadthing';
 import styles from './ThreadForm.module.css';
 import { HiXMark } from 'react-icons/hi2';
@@ -11,6 +9,8 @@ import ReactLoading from 'react-loading';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useFetchUser } from '@/hooks/requests/user/useGetUser';
+import { useCreateThread } from '@/hooks/requests/thread/useCreateThread';
 
 const ThreadForm = ({
     state,
@@ -25,60 +25,13 @@ const ThreadForm = ({
 
     const [image, setImage] = useState<string | null>(null);
     const [caption, setCaption] = useState<string | null>(null);
-    const { loading } = useAppSelector((state) => state.thread);
+    const { loading } = useAppSelector((state) => state.createThread);
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-
-        dispatch(request());
-
-        try {
-            if (!caption && !image) {
-                toast.error('Cannot upload an empty thread.');
-            }
-
-            const res = await fetch('/api/thread/create-thread', {
-                method: 'POST',
-                body: JSON.stringify({
-                    userId: currentUserId,
-                    image: image,
-                    caption: caption,
-                }),
-            });
-
-            const response = await res.json();
-
-            if (!res.ok) {
-                return toast.error(response.message, {
-                    style: {
-                        borderRadius: '10px',
-                        background: '#333',
-                        color: '#fff',
-                    },
-                    duration: 6000,
-                });
-            }
-
-            if (res.ok) {
-                dispatch(success());
-
-                return toast.success(response.message, {
-                    style: {
-                        borderRadius: '10px',
-                        background: '#333',
-                        color: '#fff',
-                    },
-                    duration: 6000,
-                });
-            }
-        } catch (error: any) {
-            dispatch(failure(error));
-
-            return toast.error(error.message, {});
-        } finally {
-            return toggleState;
-        }
-    };
+    const handleSubmit = useCreateThread({
+        userId: currentUserId as string,
+        image: image as string,
+        caption: caption as string,
+    });
 
     return (
         <div

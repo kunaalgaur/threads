@@ -10,7 +10,7 @@ import styles from './page.module.css';
 const page = () => {
     const [pageNumber, setPageNumber] = useState<number>(1);
     const threads = useGetThreads(pageNumber);
-    const { loading } = useAppSelector((state) => state.getThreads);
+    const { loading } = useAppSelector((state) => state.getAllThread);
 
     if (loading) {
         return (
@@ -38,7 +38,7 @@ const page = () => {
             <div id={styles.bottom}>
                 <div id={styles.buttons}>
                     <button
-                        onClick={()  => setPageNumber(pageNumber - 1)}
+                        onClick={() => setPageNumber(pageNumber - 1)}
                         className={styles.button}>
                         Prev
                     </button>

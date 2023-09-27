@@ -1,7 +1,5 @@
 'use client';
 
-import { useUpdateUser } from '@/hooks/requests/user/useEditUser';
-import { useFetchUser } from '@/hooks/API calls/GET/useFetchUser';
 import { UploadButton } from '@/utils/uploadthing';
 import styles from './EditUserForm.module.css';
 import { useAppSelector } from '@/redux/hooks';
@@ -11,6 +9,8 @@ import React, { useState } from 'react';
 import '@uploadthing/react/styles.css';
 import Image from 'next/image';
 import { currentUserId } from '@/constants/variable';
+import { useFetchUser } from '@/hooks/requests/user/useGetUser';
+import { useEditUser } from '@/hooks/requests/user/useEditUser';
 
 const EditUserForm = () => {
     const { userId } = useParams();
@@ -21,14 +21,14 @@ const EditUserForm = () => {
     const [name, setName] = useState<string>(user?.name);
     const [bio, setBio] = useState<string>(user?.bio);
 
-    const handleUpdateUser = useUpdateUser(userId as string, {
+    const handleUpdateUser = useEditUser(userId as string, {
         currentUserId: currentUserId as string,
         image: image as string,
         name: name as string,
         bio: bio as string,
     });
 
-    const { loading } = useAppSelector((state) => state.profile);
+    const { loading } = useAppSelector((state) => state.editUser);
 
     return (
         <div id={styles.container}>

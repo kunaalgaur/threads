@@ -1,8 +1,14 @@
 'use client';
 
+import { useSignout } from '@/hooks/requests/user/useSignout';
 import styles from './page.module.css';
+import { useDeleteUser } from '@/hooks/requests/user/useDeleteUser';
+import { currentUserId } from '@/constants/variable';
+import ReactLoading from 'react-loading';
 
 const page = () => {
+    const handleLogout = useSignout();
+    const handleDelete = useDeleteUser(currentUserId);
     return (
         <div id={styles.container}>
             <span id={styles.heading}>Settings</span>
@@ -81,7 +87,10 @@ const page = () => {
                     journey with us ends here.
                 </span>
                 <label htmlFor="" className={styles.label}>
-                    <button className={styles.button} id={styles.dangerButton}>
+                    <button
+                        className={styles.button}
+                        id={styles.dangerButton}
+                        onClick={handleDelete}>
                         Delete account
                     </button>
                 </label>
@@ -97,7 +106,10 @@ const page = () => {
                     Just one click away.
                 </span>
                 <label htmlFor="" className={styles.label}>
-                    <button className={styles.button} id={styles.dangerButton}>
+                    <button
+                        className={styles.button}
+                        id={styles.dangerButton}
+                        onClick={handleLogout}>
                         Log out
                     </button>
                 </label>

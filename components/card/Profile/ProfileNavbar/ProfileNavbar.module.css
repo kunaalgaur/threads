@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-top: 1px solid #80808055;
     border-bottom: 1px solid #80808055;
     height: 50px;
 }
