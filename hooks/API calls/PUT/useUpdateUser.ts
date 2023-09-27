@@ -9,13 +9,23 @@ import toast from 'react-hot-toast';
 
 export const useUpdateUser = (
     userId: string,
-    { image, name, bio }: { image: string; name: string; bio: string }
+    {
+        currentUserId,
+        image,
+        name,
+        bio,
+    }: { currentUserId: string; image: string; name: string; bio: string }
 ) => {
     const dispatch = useAppDispatch();
     const handleUpdateUser = async () => {
         dispatch(updateRequest());
         await axios
-            .put(`/api/user/edit-user/${userId}`, { image, name, bio })
+            .put(`/api/user/edit-user/${userId}`, {
+                currentUserId,
+                image,
+                name,
+                bio,
+            })
             .then((res) => {
                 dispatch(updateSuccess());
                 const response = res.data;

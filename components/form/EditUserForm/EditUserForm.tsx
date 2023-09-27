@@ -10,9 +10,11 @@ import ReactLoading from 'react-loading';
 import React, { useState } from 'react';
 import '@uploadthing/react/styles.css';
 import Image from 'next/image';
+import { currentUserId } from '@/constants/variable';
 
 const EditUserForm = () => {
     const { userId } = useParams();
+
     const user = useFetchUser(userId as string);
 
     const [image, setImage] = useState<string | null>(user?.image);
@@ -20,6 +22,7 @@ const EditUserForm = () => {
     const [bio, setBio] = useState<string>(user?.bio);
 
     const handleUpdateUser = useUpdateUser(userId as string, {
+        currentUserId: currentUserId as string,
         image: image as string,
         name: name as string,
         bio: bio as string,
