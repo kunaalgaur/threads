@@ -4,11 +4,11 @@ import { useAppSelector } from '@/redux/hooks';
 import Profile from '@/components/card/Profile/Profile';
 import { useParams } from 'next/navigation';
 import ReactLoading from 'react-loading';
-import { useFetchUser } from '@/hooks/requests/user/useGetUser';
+import { useGetUser } from '@/hooks/requests/user/useGetUser';
 
 const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
     const { userId } = useParams();
-    const user = useFetchUser(userId as string);
+    const user = useGetUser(userId as string);
     const { loading } = useAppSelector((state) => state.getSingleUser);
 
     if (loading) {
