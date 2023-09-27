@@ -11,21 +11,23 @@ export const GET = async (
 
         const threadId = params.threadId;
 
-        const thread = await Thread.findById(threadId);
+        const thread = await Thread.findById(threadId).populate(
+            'userId',
+            'username image'
+        );
 
         if (!thread) {
-            return NextResponse.json({
-                status: 404,
-                name: 'Custom Error',
-                message: 'Thread not found.',
-            });
+            return NextResponse.json(
+                {
+                    message: 'Thread not found.',
+                },
+                {
+                    status: 404,
+                }
+            );
         }
 
-        return NextResponse.json({
-            status: 200,
-            data: thread,
-            message: 'Thread found',
-        });
+        return NextResponse.json(thread, { status: 200 });
     } catch (error: any) {
         return NextResponse.json(
             {

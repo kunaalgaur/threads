@@ -8,6 +8,8 @@ export const PUT = async (req: Request) => {
 
         const { userId, friendId } = await req.json();
 
+        // Validate userId and friendId here (e.g., check if they are valid ObjectId values)
+
         const user = await User.findById(userId);
         const friend = await User.findById(friendId);
 
@@ -29,7 +31,8 @@ export const PUT = async (req: Request) => {
             );
         }
 
-        if (user.followers.include === friendId) {
+        if (user.followers.includes(friendId)) {
+            // Unfollow user
             await user.followers.pull(friendId);
             await friend.followings.pull(userId);
 
@@ -40,6 +43,7 @@ export const PUT = async (req: Request) => {
                 { status: 200 }
             );
         } else {
+            // Follow user
             await user.followers.push(friendId);
             await friend.followings.push(userId);
 
@@ -51,6 +55,7 @@ export const PUT = async (req: Request) => {
             );
         }
     } catch (error: any) {
+        // Handle specific error types and provide appropriate responses
         return NextResponse.json({
             status: 500,
             name: error.name,
