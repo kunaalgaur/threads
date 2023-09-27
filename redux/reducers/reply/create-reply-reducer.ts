@@ -1,44 +1,40 @@
 import { INITIAL_STATE } from '@/constants/initial-state';
-import { currentUserId } from '@/constants/variable';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type INITIAL_STATE = {
     loading: boolean;
     error: any | null;
-    userId: string | null;
 };
 
 const initialState = {
     loading: false,
     error: null,
-    userId: (currentUserId as string) || null,
 } as unknown as INITIAL_STATE;
 
-export const signin = createSlice({
-    name: 'SIGN IN',
+export const createReply = createSlice({
+    name: 'CREATE REPLY',
     initialState,
     reducers: {
-        SIGNIN_REQUEST: (state) => {
+        CREATE_REPLY_REQUEST: (state) => {
             state.loading = true;
             state.error = null;
-            state.userId = null;
         },
 
-        SIGNIN_SUCCESS: (state, action) => {
+        CREATE_REPLY_SUCCESS: (state) => {
             state.loading = false;
             state.error = null;
-            state.userId = action.payload.userId;
         },
 
-        SIGNIN_FAILURE: (state, action) => {
+        CREATE_REPLY_FAILURE: (state, action) => {
             state.loading = false;
             state.error = action.payload.error;
-            state.userId = null;
         },
     },
 });
 
-export const { SIGNIN_REQUEST, SIGNIN_SUCCESS, SIGNIN_FAILURE } =
-    signin.actions;
-
-export default signin.reducer;
+export const {
+    CREATE_REPLY_FAILURE,
+    CREATE_REPLY_REQUEST,
+    CREATE_REPLY_SUCCESS,
+} = createReply.actions;
+export default createReply.reducer;

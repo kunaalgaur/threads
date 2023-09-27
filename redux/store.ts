@@ -12,6 +12,8 @@ import editThreadReducer from './reducers/thread/edit-thread-reducer';
 import getAllThreadReducer from './reducers/thread/get-all-thread-reducer';
 import getFeedReducer from './reducers/thread/get-feed-reducer';
 import getSingleThreadReducer from './reducers/thread/get-single-thread-reducer';
+import createReplyReducer from './reducers/reply/create-reply-reducer';
+import getSingleThreadRepliesReducer from './reducers/reply/get-single-thread-replies-reducer';
 
 export const store = configureStore({
     reducer: {
@@ -29,6 +31,9 @@ export const store = configureStore({
         getAllThread: getAllThreadReducer,
         getFeed: getFeedReducer,
         getSingleThread: getSingleThreadReducer,
+
+        createReply: createReplyReducer,
+        getSingleThreadReplies: getSingleThreadRepliesReducer,
     },
 });
 
