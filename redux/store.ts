@@ -5,6 +5,7 @@ import signupReducer from './slice/signup-slice';
 import onboardingSlice from './slice/onboarding-slice';
 import profileSlice from './slice/profile-slice';
 import getThreadsSlice from './slice/get-all-threads-slice';
+import followSlice from './slice/follow-slice';
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
         onboarding: onboardingSlice,
         profile: profileSlice,
         getThreads: getThreadsSlice,
+        follow: followSlice,
     },
 });
 
