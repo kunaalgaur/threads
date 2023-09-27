@@ -23,6 +23,7 @@ export type Post = {
     createdAt: string;
 };
 
+
 export type IReply = {
     _id: string;
     threadId: string;
