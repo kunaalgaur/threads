@@ -21,12 +21,12 @@ export const getFeed = createSlice({
         },
 
         GET_FEED_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         GET_FEED_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },

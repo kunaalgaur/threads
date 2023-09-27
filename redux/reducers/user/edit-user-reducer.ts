@@ -21,12 +21,12 @@ export const editUser = createSlice({
         },
 
         EDIT_USER_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         EDIT_USER_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },

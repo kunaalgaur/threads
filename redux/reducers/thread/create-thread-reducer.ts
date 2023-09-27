@@ -21,12 +21,12 @@ export const createThread = createSlice({
         },
 
         CREATE_THREAD_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         CREATE_THREAD_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },

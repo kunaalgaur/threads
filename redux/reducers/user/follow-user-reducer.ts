@@ -21,12 +21,12 @@ export const followUser = createSlice({
         },
 
         FOLLOW_USER_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         FOLLOW_USER_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },

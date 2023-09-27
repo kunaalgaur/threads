@@ -23,12 +23,12 @@ export const onboarding = createSlice({
         },
 
         ONBOARDING_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         ONBOARDING_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },

@@ -21,12 +21,12 @@ export const signout = createSlice({
         },
 
         SIGNOUT_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         SIGNOUT_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },

@@ -21,12 +21,12 @@ export const editThread = createSlice({
         },
 
         EDIT_THREAD_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         EDIT_THREAD_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },

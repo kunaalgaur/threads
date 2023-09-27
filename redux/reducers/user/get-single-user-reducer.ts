@@ -21,12 +21,12 @@ export const getSingleUser = createSlice({
         },
 
         GET_SINGLE_USER_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         GET_SINGLE_USER_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },

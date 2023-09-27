@@ -24,15 +24,15 @@ export const signin = createSlice({
         },
 
         SIGNIN_SUCCESS: (state, action) => {
-            state.loading = true;
-            state.error = action.payload.userId;
-            state.userId = null;
+            state.loading = false;
+            state.error = null;
+            state.userId = action.payload.userId;
         },
 
         SIGNIN_FAILURE: (state, action) => {
-            state.loading = true;
-            state.error = null;
-            state.userId = action.payload.error;
+            state.loading = false;
+            state.error = action.payload.error;
+            state.userId = null;
         },
     },
 });

@@ -21,12 +21,12 @@ export const signup = createSlice({
         },
 
         SIGNUP_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         SIGNUP_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },

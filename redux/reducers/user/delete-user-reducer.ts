@@ -21,12 +21,12 @@ export const deleteUser = createSlice({
         },
 
         DELETE_USER_SUCCESS: (state) => {
-            state.loading = true;
+            state.loading = false;
             state.error = null;
         },
 
         DELETE_USER_FAILURE: (state, action) => {
-            state.loading = true;
+            state.loading = false;
             state.error = action.payload.error;
         },
     },
