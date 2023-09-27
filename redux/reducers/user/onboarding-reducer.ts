@@ -1,3 +1,4 @@
+import { currentUserId } from '@/constants/variable';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type INITIAL_STATE = {
@@ -9,7 +10,7 @@ type INITIAL_STATE = {
 const initialState = {
     loading: false,
     error: null,
-    userId: (localStorage.getItem('userId') as string) || null,
+    userId: (currentUserId as string) || null,
 } as unknown as INITIAL_STATE;
 
 export const onboarding = createSlice({
