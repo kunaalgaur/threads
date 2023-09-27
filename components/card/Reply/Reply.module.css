@@ -1,0 +1,22 @@
+#container {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+#image {
+    border-radius: 50%;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#body {
+    font-size: small;
+    color: grey;
+}
