@@ -1,7 +1,7 @@
 'use client';
 
 import Thread from '@/components/card/Thread/Thread';
-import { useGetThreads } from '@/hooks/API calls/GET/useGetThreads';
+import { useGetThreads } from '@/hooks/requests/thread/useGetThreads';
 import { useAppSelector } from '@/redux/hooks';
 import { useState } from 'react';
 import ReactLoading from 'react-loading';

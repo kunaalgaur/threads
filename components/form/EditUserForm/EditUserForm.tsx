@@ -1,6 +1,6 @@
 'use client';
 
-import { useUpdateUser } from '@/hooks/API calls/PUT/useUpdateUser';
+import { useUpdateUser } from '@/hooks/requests/user/useEditUser';
 import { useFetchUser } from '@/hooks/API calls/GET/useFetchUser';
 import { UploadButton } from '@/utils/uploadthing';
 import styles from './EditUserForm.module.css';

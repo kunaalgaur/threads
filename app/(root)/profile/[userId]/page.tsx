@@ -3,7 +3,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
-import { useSingleUserPost } from '@/hooks/API calls/GET/useSingleUserPost';
+import { useSingleUserPost } from '@/hooks/requests/thread/useSingleUserPost';
 import Thread from '@/components/card/Thread/Thread';
 
 const page = () => {

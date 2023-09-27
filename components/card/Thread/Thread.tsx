@@ -9,7 +9,7 @@ import {
 } from 'react-icons/hi2';
 import { Post } from '@/constants/type';
 import moment from 'moment';
-import { useLikeThread } from '@/hooks/API calls/PUT/useLikeThread';
+import { useLikeThread } from '@/hooks/requests/thread/useLikeThread';
 import { currentUserId } from '@/constants/variable';
 
 const Thread = ({ post }: { post: Post }) => {

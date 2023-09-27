@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from './ProfileButtons.module.css';
 import toast from 'react-hot-toast';
 import { currentUserId } from '@/constants/variable';
-import { useFollow } from '@/hooks/API calls/PUT/useFollow';
+import { useFollow } from '@/hooks/requests/user/useFollow';
 import { string } from 'yup';
 
 const ProfileButtons = ({ userId }: { userId: string }) => {

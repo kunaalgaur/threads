@@ -4,7 +4,7 @@ import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
 import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import User from '@/components/card/User/User';
-import { useSearchFilter } from '@/hooks/API calls/GET/useSearchFilter';
+import { useSearchFilter } from '@/hooks/requests/user/useSearchFilter';
 
 const page = () => {
     const [query, setQuery] = useState<string>('');

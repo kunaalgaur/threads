@@ -28,7 +28,6 @@ export type INITIAL_STATE_TYPE = {
         loading: boolean;
         error: any | null;
         userId: string | null;
-        isAuthenticated: boolean;
     };
     thread: { loading: boolean; error: any | null };
     replies: { loading: boolean; error: any | null };

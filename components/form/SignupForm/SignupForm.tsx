@@ -1,7 +1,7 @@
 'use client';
 
 import { useAppSelector } from '@/redux/hooks';
-import { useSignup } from '@/hooks/API calls/POST/useSignup';
+import { useSignup } from '@/hooks/requests/user/useSignup';
 import styles from './SignupForm.module.css';
 import ReactLoading from 'react-loading';
 import { useState } from 'react';

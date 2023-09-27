@@ -7,7 +7,7 @@ import styles from './NavbarRight.module.css';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useSignout } from '@/hooks/API calls/POST/useSignout';
+import { useSignout } from '@/hooks/requests/user/useSignout';
 
 const NavbarRight = () => {
     const dispatch = useAppDispatch();
