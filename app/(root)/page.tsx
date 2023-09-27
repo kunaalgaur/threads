@@ -38,14 +38,13 @@ const page = () => {
             <div id={styles.bottom}>
                 <div id={styles.buttons}>
                     <button
-                        onClick={() => () => setPageNumber(pageNumber - 1)}
+                        onClick={()  => setPageNumber(pageNumber - 1)}
                         className={styles.button}>
                         Prev
                     </button>
                     <div id={styles.number}>{pageNumber}</div>
                     <button
                         onClick={() => setPageNumber(pageNumber + 1)}
-                        // disabled={threads.length <= 15}
                         className={styles.button}>
                         Next
                     </button>
