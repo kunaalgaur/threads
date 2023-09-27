@@ -1,18 +1,13 @@
 'use client';
 
+import { useSignout } from '@/hooks/requests/user/useSignout';
 import { HiMiniBars3BottomRight } from 'react-icons/hi2';
-import { logout } from '@/redux/slice/signin-slice';
-import { useAppDispatch } from '@/redux/hooks';
 import styles from './NavbarRight.module.css';
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useSignout } from '@/hooks/requests/user/useSignout';
+import { currentUserId } from '@/constants/variable';
 
 const NavbarRight = () => {
-    const dispatch = useAppDispatch();
-    const router = useRouter();
-
     const [toggle, setToggle] = useState(false);
 
     const handleClick = () => {
@@ -32,7 +27,9 @@ const NavbarRight = () => {
                     About
                 </Link>
 
-                <Link href="/settings" className={styles.link}>
+                <Link
+                    href={`/settings/${currentUserId}`}
+                    className={styles.link}>
                     Settings
                 </Link>
 

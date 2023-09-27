@@ -9,13 +9,13 @@ import React, { useState } from 'react';
 import '@uploadthing/react/styles.css';
 import Image from 'next/image';
 import { currentUserId } from '@/constants/variable';
-import { useFetchUser } from '@/hooks/requests/user/useGetUser';
+import { useGetUser } from '@/hooks/requests/user/useGetUser';
 import { useEditUser } from '@/hooks/requests/user/useEditUser';
 
 const EditUserForm = () => {
     const { userId } = useParams();
 
-    const user = useFetchUser(userId as string);
+    const user = useGetUser(userId as string);
 
     const [image, setImage] = useState<string | null>(user?.image);
     const [name, setName] = useState<string>(user?.name);

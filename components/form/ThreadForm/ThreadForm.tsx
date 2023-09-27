@@ -6,10 +6,9 @@ import { UploadButton } from '@/utils/uploadthing';
 import styles from './ThreadForm.module.css';
 import { HiXMark } from 'react-icons/hi2';
 import ReactLoading from 'react-loading';
-import toast from 'react-hot-toast';
 import { useState } from 'react';
 import Image from 'next/image';
-import { useFetchUser } from '@/hooks/requests/user/useGetUser';
+import { useGetUser } from '@/hooks/requests/user/useGetUser';
 import { useCreateThread } from '@/hooks/requests/thread/useCreateThread';
 
 const ThreadForm = ({
@@ -21,7 +20,7 @@ const ThreadForm = ({
 }) => {
     const dispatch = useAppDispatch();
 
-    const user = useFetchUser(currentUserId as string);
+    const user = useGetUser(currentUserId as string);
 
     const [image, setImage] = useState<string | null>(null);
     const [caption, setCaption] = useState<string | null>(null);

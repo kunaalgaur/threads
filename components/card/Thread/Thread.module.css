@@ -26,11 +26,18 @@
 
 #username {
     font-weight: 500;
+    color: white;
+    text-decoration: none;
 }
 
 #time {
     color: grey;
     font-size: small;
+}
+
+#caption {
+    text-decoration: none;
+    color: white;
 }
 
 #middle {
@@ -61,6 +68,14 @@
     align-items: center;
     gap: 20px;
     font-size: x-large;
+}
+
+#commentButton {
+    color: white;
+}
+
+#copyButton {
+    cursor: pointer;
 }
 
 @media (orientation: portrait) {

@@ -30,7 +30,7 @@ export const GET = async (
             verifyTokenExpiry: undefined,
         };
 
-        return NextResponse.json({ user: userImpData }, { status: 200 });
+        return NextResponse.json(userImpData, { status: 200 });
     } catch (error: any) {
         return NextResponse.json(
             {

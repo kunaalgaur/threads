@@ -11,6 +11,8 @@ import { Post } from '@/constants/type';
 import moment from 'moment';
 import { useLikeThread } from '@/hooks/requests/thread/useLikeThread';
 import { currentUserId } from '@/constants/variable';
+import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 const Thread = ({ post }: { post: Post }) => {
     const relativeTime = moment(post?.createdAt).fromNow();
@@ -20,38 +22,56 @@ const Thread = ({ post }: { post: Post }) => {
         isThreadLiked: post?.likes.includes(currentUserId),
     });
 
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(
+            `https://threads-taupe-rho.vercel.app/thread/${post?._id}`
+        );
+
+        toast.success('Link copied to clip board.');
+    };
+
     return (
         <div id={styles.container}>
             <div id={styles.top}>
-                <Image
-                    src={post?.userId.image || '/user.png'}
-                    alt=""
-                    height={40}
-                    width={40}
-                    id={styles.userImage}
-                />
+                <Link href={`/profile/${post?.userId._id}`}>
+                    <Image
+                        src={post?.userId.image || '/user.png'}
+                        alt=""
+                        height={40}
+                        width={40}
+                        id={styles.userImage}
+                    />
+                </Link>
 
                 <div id={styles.right}>
-                    <span id={styles.username}>{post?.userId.username}</span>
+                    <Link
+                        href={`/profile/${post?.userId._id}`}
+                        id={styles.username}>
+                        {post?.userId.username}
+                    </Link>
 
                     <span id={styles.time}>{relativeTime}</span>
                 </div>
             </div>
 
             <div id={styles.middle}>
-                <span id={styles.caption}>{post?.caption}</span>
+                <Link href={`/thread/${post?._id}`} id={styles.caption}>
+                    {post?.caption}
+                </Link>
                 <div
                     id={styles.imageWrapper}
                     style={{ display: post?.image ? 'block' : 'none' }}>
                     {post?.image && (
-                        <Image
-                            src={post?.image}
-                            alt=""
-                            height={0}
-                            width={0}
-                            style={{ height: '100%', width: '100%' }}
-                            id={styles.postImage}
-                        />
+                        <Link href={`/thread/${post?._id}`}>
+                            <Image
+                                src={post?.image}
+                                alt=""
+                                height={0}
+                                width={0}
+                                style={{ height: '100%', width: '100%' }}
+                                id={styles.postImage}
+                            />
+                        </Link>
                     )}
                 </div>
             </div>
@@ -69,14 +89,20 @@ const Thread = ({ post }: { post: Post }) => {
             <div id={styles.threadButtons}>
                 <div onClick={handleLike}>
                     {isLiked ? (
-                        <HiOutlineHeart />
-                    ) : (
                         <HiHeart style={{ color: 'tomato' }} />
+                    ) : (
+                        <HiOutlineHeart />
                     )}
                 </div>
-                <HiOutlineChatBubbleOvalLeft />
-                <HiOutlineArrowPathRoundedSquare />
-                <HiOutlinePaperAirplane />
+                <Link href={`/thread/${post?._id}`} id={styles.commentButton}>
+                    <HiOutlineChatBubbleOvalLeft />
+                </Link>
+                <div>
+                    <HiOutlineArrowPathRoundedSquare />
+                </div>
+                <div onClick={handleCopyLink} id={styles.copyButton}>
+                    <HiOutlinePaperAirplane />
+                </div>
             </div>
         </div>
     );
