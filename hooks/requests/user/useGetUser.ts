@@ -7,41 +7,32 @@ import {
     GET_SINGLE_USER_REQUEST,
     GET_SINGLE_USER_SUCCESS,
 } from '@/redux/reducers/user/get-single-user-reducer';
+import axios from '@/lib/axios';
 
-export const useFetchUser = (userId: string) => {
+export const useGetUser = (userId: string) => {
     const dispatch = useAppDispatch();
     const [user, setUser] = useState<User>();
 
     useEffect(() => {
-        const getData = async () => {
-            dispatch(GET_SINGLE_USER_REQUEST());
+        if (userId) {
+            const getData = async () => {
+                dispatch(GET_SINGLE_USER_REQUEST());
 
-            if (userId) {
-                try {
-                    const res = await fetch(`/api/user/get-user/${userId}`, {
-                        method: 'GET',
+                await axios
+                    .get(`/api/user/get-user/${userId}`)
+                    .then((res) => {
+                        const response = res.data;
+                        setUser(response);
+                        return dispatch(GET_SINGLE_USER_SUCCESS());
+                    })
+                    .catch((error) => {
+                        dispatch(GET_SINGLE_USER_FAILURE(error.message));
+                        throw new Error(error.messa);
                     });
-                    const response = await res.json();
+            };
 
-                    if (!res.ok) {
-                        dispatch(GET_SINGLE_USER_FAILURE(response.message));
-                        toast.error(response.message);
-                        throw new Error(response.message);
-                    }
-
-                    if (res.ok) {
-                        dispatch(GET_SINGLE_USER_SUCCESS());
-                        setUser(response.user);
-                    }
-                } catch (error: any) {
-                    toast.error(error.message);
-                    dispatch(GET_SINGLE_USER_FAILURE(error.message));
-                    throw new Error(error.message);
-                }
-            }
-        };
-
-        getData();
+            getData();
+        }
     }, [userId]);
 
     return user as User;
