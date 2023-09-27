@@ -1,4 +1,3 @@
-import { INITIAL_STATE } from '@/constants/initial-state';
 import { currentUserId } from '@/constants/variable';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
