@@ -4,6 +4,8 @@ import Link from 'next/link';
 import styles from './ProfileButtons.module.css';
 import toast from 'react-hot-toast';
 import { currentUserId } from '@/constants/variable';
+import { useFollow } from '@/hooks/API calls/PUT/useFollow';
+import { string } from 'yup';
 
 const ProfileButtons = ({ userId }: { userId: string }) => {
     if (userId === currentUserId) {
@@ -21,9 +23,13 @@ const ProfileButtons = ({ userId }: { userId: string }) => {
         );
     }
 
+    const handleFollow = useFollow(userId, currentUserId as string);
+
     return (
         <div id={styles.container}>
-            <button className={styles.button}>Follow</button>
+            <button className={styles.button} onClick={handleFollow}>
+                Follow
+            </button>
             <button
                 className={styles.button}
                 onClick={() =>

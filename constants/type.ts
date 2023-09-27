@@ -22,3 +22,15 @@ export type Post = {
     children: string[];
     createdAt: string;
 };
+
+export type INITIAL_STATE_TYPE = {
+    user: {
+        loading: boolean;
+        error: any | null;
+        userId: string | null;
+        isAuthenticated: boolean;
+    };
+    thread: { loading: boolean; error: any | null };
+    replies: { loading: boolean; error: any | null };
+    repost: { loading: boolean; error: any | null };
+};
