@@ -23,13 +23,14 @@ export type Post = {
     createdAt: string;
 };
 
-export type INITIAL_STATE_TYPE = {
-    user: {
-        loading: boolean;
-        error: any | null;
-        userId: string | null;
+export type IReply = {
+    _id: string;
+    threadId: string;
+    userId: {
+        _id: string;
+        username: string;
+        image: string;
     };
-    thread: { loading: boolean; error: any | null };
-    replies: { loading: boolean; error: any | null };
-    repost: { loading: boolean; error: any | null };
+    body: string;
+    likes: string[];
 };
