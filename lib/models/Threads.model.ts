@@ -27,7 +27,7 @@ const threadsSchema: Schema<IThreads> = new mongoose.Schema(
         children: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Comments',
+                ref: 'Reply',
             },
         ],
     },
