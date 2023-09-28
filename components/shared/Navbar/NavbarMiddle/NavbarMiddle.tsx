@@ -14,38 +14,28 @@ import { useState } from 'react';
 import { currentUserId } from '@/constants/variable';
 
 const NavbarMiddle = () => {
-    const [toggle, setToggle] = useState(false);
-
-    const handleClick = () => {
-        setToggle(!toggle);
-    };
     return (
-        <>
-            <div id={styles.container}>
-                <Link href="/" className={styles.link}>
-                    <HiOutlineHome />
-                </Link>
+        <div id={styles.container}>
+            <Link href="/" className={styles.link}>
+                <HiOutlineHome />
+            </Link>
 
-                <Link href="/search" className={styles.link}>
-                    <HiOutlineMagnifyingGlass />
-                </Link>
+            <Link href="/search" className={styles.link}>
+                <HiOutlineMagnifyingGlass />
+            </Link>
 
-                <div className={styles.link} onClick={handleClick}>
-                    <HiOutlinePencilSquare />
-                </div>
+            <Link href="/thread/create" className={styles.link}>
+                <HiOutlinePencilSquare />
+            </Link>
 
-                <Link href="/activity" className={styles.link}>
-                    <HiOutlineHeart />
-                </Link>
+            <Link href="/activity" className={styles.link}>
+                <HiOutlineHeart />
+            </Link>
 
-                <Link
-                    href={`/profile/${currentUserId}`}
-                    className={styles.link}>
-                    <HiOutlineUser />
-                </Link>
-            </div>
-            <ThreadForm state={toggle} toggleState={handleClick} />
-        </>
+            <Link href={`/profile/${currentUserId}`} className={styles.link}>
+                <HiOutlineUser />
+            </Link>
+        </div>
     );
 };
 

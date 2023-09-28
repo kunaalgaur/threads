@@ -1,3 +1,5 @@
+'use client';
+
 import EditUserForm from '@/components/form/EditUserForm/EditUserForm';
 import React from 'react';
 import styles from './page.module.css';

@@ -12,10 +12,7 @@ export const useFollow = (userId: string, friendId: string) => {
     const handleFollow = async () => {
         dispatch(FOLLOW_USER_REQUEST());
         await axios
-            .put(`/api/user/follow-user`, {
-                userId,
-                friendId,
-            })
+            .put(`/api/user/follow-user/${userId}`, { friendId: friendId })
             .then((res) => {
                 const response = res.data;
                 toast.success(response.message);

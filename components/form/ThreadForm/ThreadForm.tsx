@@ -3,9 +3,9 @@
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { currentUserId } from '@/constants/variable';
 import { UploadButton } from '@/utils/uploadthing';
+import ReactLoading from 'react-loading';
 import styles from './ThreadForm.module.css';
 import { HiXMark } from 'react-icons/hi2';
-import ReactLoading from 'react-loading';
 import { useState } from 'react';
 import Image from 'next/image';
 import { useGetUser } from '@/hooks/requests/user/useGetUser';

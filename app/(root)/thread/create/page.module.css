@@ -1,0 +1,54 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+#top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#userImage {
+    border-radius: 50%;
+}
+
+#middle {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.textarea {
+    border: none;
+    background: none;
+    outline: none;
+    min-height: 80px;
+    color: white;
+    padding: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+        sans-serif;
+}
+
+#bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+#button {
+    height: 40px;
+    padding: 0 20px;
+    outline: none;
+    border-radius: 50px;
+    font-weight: 500;
+    background: none;
+    border: 1px solid #80808055;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
