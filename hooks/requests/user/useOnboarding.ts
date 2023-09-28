@@ -25,6 +25,18 @@ export const useOnboarding = ({
         e.preventDefault();
         dispatch(ONBOARDING_REQUEST());
 
+        if (!isValidUsername(username)) {
+            toast.error('Please enter a valid username.', {
+                style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                },
+                duration: 6000,
+            });
+            return;
+        }
+
         if (currentUserId) {
             await axios
                 .put(`/api/auth/onboarding/${currentUserId}`, {
@@ -63,6 +75,11 @@ export const useOnboarding = ({
                     throw new Error(error.message);
                 });
         }
+    };
+
+    const isValidUsername = (username: string) => {
+        const usernameRegex = /^[a-z0-9_.]+$/;
+        return usernameRegex.test(username);
     };
 
     return handleOnboarding;
