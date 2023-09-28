@@ -1,9 +1,9 @@
-import { User } from '@/constants/type';
+import { User, follower } from '@/constants/type';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './User.module.css';
 
-const User = ({ user }: { user: User }) => {
+const User = ({ user }: { user: User | follower }) => {
     return (
         <Link href={`/profile/${user?._id}`} id={styles.container}>
             <Image
