@@ -14,6 +14,8 @@ import getFeedReducer from './reducers/thread/get-feed-reducer';
 import getSingleThreadReducer from './reducers/thread/get-single-thread-reducer';
 import createReplyReducer from './reducers/reply/create-reply-reducer';
 import getSingleThreadRepliesReducer from './reducers/reply/get-single-thread-replies-reducer';
+import getFollowersReducer from './reducers/user/get-followers-reducer';
+import getFollowingsReducer from './reducers/user/get-followings-reducer';
 
 export const store = configureStore({
     reducer: {
@@ -24,6 +26,8 @@ export const store = configureStore({
         getAllUser: getAllUserReducer,
         getSingleUser: getSingleUserReducer,
         editUser: editUserReducer,
+        getFollowers: getFollowersReducer,
+        getFollowings: getFollowingsReducer,
 
         createThread: createThreadReducer,
         deleteThread: deleteThreadReducer,
