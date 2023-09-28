@@ -1,3 +1,5 @@
+import { string } from 'yup';
+
 export type User = {
     _id: string;
     name: string;
@@ -23,7 +25,6 @@ export type Post = {
     createdAt: string;
 };
 
-
 export type IReply = {
     _id: string;
     threadId: string;
@@ -34,4 +35,11 @@ export type IReply = {
     };
     body: string;
     likes: string[];
+};
+
+export type follower = {
+    _id: string;
+    name: string;
+    username: string | null;
+    image: string;
 };
