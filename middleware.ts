@@ -38,6 +38,11 @@ export const config = {
         '/activity/:userId*',
         '/edit-profile/:userId*',
         '/followers/:userId*',
+        '/followings/:userId*',
+        '/activity',
+        '/likes',
+        '/thread/:threadId*',
+        '/thread/create',
         '/settings/:userId*',
     ],
 };
