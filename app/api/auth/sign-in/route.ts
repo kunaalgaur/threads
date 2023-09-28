@@ -28,7 +28,7 @@ export const POST = async (req: Request) => {
                     message:
                         'Incorrect password, please enter correct password to continue.',
                 },
-                { status: 401 }
+                { status: 402 }
             );
         }
 
