@@ -1,4 +1,4 @@
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useEffect, useState } from 'react';
 import { User } from '@/constants/type';
 import toast from 'react-hot-toast';
@@ -12,6 +12,7 @@ import axios from '@/lib/axios';
 export const useGetUser = (userId: string) => {
     const dispatch = useAppDispatch();
     const [user, setUser] = useState<User>();
+    const { loading } = useAppSelector((state) => state.getSingleUser);
 
     useEffect(() => {
         if (userId) {
