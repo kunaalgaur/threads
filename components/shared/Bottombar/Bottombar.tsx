@@ -9,7 +9,6 @@ import {
     HiOutlineUser,
     HiOutlinePencilSquare,
 } from 'react-icons/hi2';
-import ThreadForm from '@/components/form/ThreadForm/ThreadForm';
 import { useState } from 'react';
 import { currentUserId } from '@/constants/variable';
 
