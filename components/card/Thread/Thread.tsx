@@ -71,6 +71,7 @@ const Thread = ({ post }: { post: Post }) => {
                                 width={0}
                                 style={{ height: '100%', width: '100%' }}
                                 id={styles.postImage}
+                                unoptimized
                             />
                         </Link>
                     )}
