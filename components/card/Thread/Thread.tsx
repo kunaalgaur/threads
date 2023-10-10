@@ -40,6 +40,7 @@ const Thread = ({ post }: { post: Post }) => {
                         height={40}
                         width={40}
                         id={styles.userImage}
+                        unoptimized
                     />
                 </Link>
 
